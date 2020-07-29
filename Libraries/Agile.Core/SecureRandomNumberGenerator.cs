@@ -7,23 +7,14 @@ namespace Agile.Core
 {
     public partial class SecureRandomNumberGenerator : RandomNumberGenerator
     {
-        #region Field
-
         private bool _disposed = false;
         private readonly RandomNumberGenerator _rng;
-
-        #endregion
-
-        #region Ctor
 
         public SecureRandomNumberGenerator()
         {
             _rng = new RNGCryptoServiceProvider();
         }
 
-        #endregion
-
-        #region Methods
 
         public int Next()
         {
@@ -64,16 +55,12 @@ namespace Agile.Core
             _rng.GetNonZeroBytes(data);
         }
 
-        /// <summary>
-        /// Dispose secure random
-        /// </summary>
         public new void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        // Protected implementation of Dispose pattern.
         protected override void Dispose(bool disposing)
         {
             if (_disposed)
@@ -86,7 +73,5 @@ namespace Agile.Core
 
             _disposed = true;
         }
-
-        #endregion
     }
 }

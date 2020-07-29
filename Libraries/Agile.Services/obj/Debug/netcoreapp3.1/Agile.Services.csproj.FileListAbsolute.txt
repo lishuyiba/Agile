@@ -15,3 +15,4 @@ D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Debug\netcoreapp3.1
 D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Debug\netcoreapp3.1\Agile.Services.csproj.CoreCompileInputs.cache
 D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Debug\netcoreapp3.1\Agile.Services.dll
 D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Debug\netcoreapp3.1\Agile.Services.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Debug\netcoreapp3.1\Agile.Services.csprojAssemblyReference.cache
