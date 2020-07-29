@@ -14,27 +14,9 @@ namespace Agile.Core.Infrastructure
 {
     public class AgileEngine : IEngine
     {
-        #region Fields
-
         private ITypeFinder _typeFinder;
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets service provider
-        /// </summary>
         private IServiceProvider _serviceProvider { get; set; }
 
-        #endregion
-
-        #region Utilities
-
-        /// <summary>
-        /// Get IServiceProvider
-        /// </summary>
-        /// <returns>IServiceProvider</returns>
         protected IServiceProvider GetServiceProvider()
         {
             if (ServiceProvider == null)
@@ -105,8 +87,6 @@ namespace Agile.Core.Infrastructure
             assembly = tf.GetAssemblies().FirstOrDefault(a => a.FullName == args.Name);
             return assembly;
         }
-
-        #endregion
 
         #region Methods
 
