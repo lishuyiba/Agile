@@ -4,6 +4,7 @@ using System.Net;
 using Agile.Core;
 using Agile.Core.Configuration;
 using Agile.Core.Infrastructure;
+using Agile.Web.Framework.ViewLocationExpanders;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -61,5 +62,14 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
 
             return mvcBuilder;
         }
+
+        public static void AddThemes(this IServiceCollection services)
+        {
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.ViewLocationExpanders.Add(new DefaultViewLocationExpander());
+            });
+        }
+
     }
 }

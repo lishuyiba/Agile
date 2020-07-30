@@ -10,5 +10,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Libraries\Agile.Core\Agile.Core.csproj">
 	  </ProjectReference>
+	  <ProjectReference Include="..\..\Libraries\Agile.Services\Agile.Services.csproj" />
 	</ItemGroup>
 </Project>

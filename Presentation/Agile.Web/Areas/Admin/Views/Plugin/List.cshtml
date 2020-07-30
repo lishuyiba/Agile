@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+}
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <!-- 表格工具栏 -->
+            <form class="layui-form toolbar">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">插件名称:</label>
+                        <div class="layui-input-inline">
+                            <input name="username" class="layui-input" placeholder="输入插件名称" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">插件作者:</label>
+                        <div class="layui-input-inline">
+                            <input name="nickName" class="layui-input" placeholder="输入插件作者" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">插件状态:</label>
+                        <div class="layui-input-inline">
+                            <select name="sex">
+                                <option value="">请选择</option>
+                                <option value="1">已安装</option>
+                                <option value="2">未安装</option>
+                                <option value="3">已卸载</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        &emsp;
+                        <button class="layui-btn icon-btn" lay-filter="userTbSearch" lay-submit>
+                            <i class="layui-icon">&#xe615;</i>搜索
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- 数据表格 -->
+            <table id="userTable" lay-filter="userTable"></table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- 表格操作列 -->
+    <script type="text/html" id="userTbBar">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">更新</a>
+        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit">安装</a>
+        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit">卸载</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">删除</a>
+    </script>
+
+
+    <script>
+        layui.use(['layer', 'form', 'table', 'util', 'admin', 'xmSelect'], function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var table = layui.table;
+            var util = layui.util;
+            var admin = layui.admin;
+            var xmSelect = layui.xmSelect;
+            /* 渲染表格 */
+            var insTb = table.render({
+                elem: '#userTable',
+                url: '/admin/plugin/getdata',
+                page: true,
+                toolbar: ['<p>',
+                    '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>&nbsp;',
+                    '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>删除</button>',
+                    '</p>'].join(''),
+                cellMinWidth: 100,
+                cols: [[
+                    { type: 'checkbox' },
+                    { type: 'numbers' },
+                    { field: 'systemName', title: 'SystemName', sort: true },
+                    { field: 'state', title: 'State', sort: true },
+                    { field: 'author', title: 'Author', sort: true },
+                    { field: 'description', title: 'Description', sort: true },
+                    { title: '操作', toolbar: '#userTbBar', align: 'center', minWidth: 200 }
+                ]]
+            });
+
+            /* 表格搜索 */
+            form.on('submit(userTbSearch)', function (data) {
+                //insTb.reload({ where: data.field, page: { curr: 1 } });
+
+                layer.msg('开发中...', { icon: 6 });
+                return false;
+            });
+
+            /* 表格工具条点击事件 */
+            table.on('tool(userTable)', function (obj) {
+                if (obj.event === 'edit') { // 修改
+                    showEditModel(obj.data);
+                } else if (obj.event === 'del') { // 删除
+                    doDel(obj);
+                } else if (obj.event === 'reset') { // 重置密码
+                    resetPsw(obj);
+                }
+            });
+
+            /* 表格头工具栏点击事件 */
+            table.on('toolbar(userTable)', function (obj) {
+                if (obj.event === 'add') { // 添加
+                    showEditModel();
+                } else if (obj.event === 'del') { // 删除
+                    layer.msg('开发中...', { icon: 6 });
+                }
+            });
+
+            /* 显示表单弹窗 */
+            function showEditModel(mData) {
+                layer.msg('开发中...', { icon: 6 });
+            }
+
+            /* 删除 */
+            function doDel(obj) {
+                layer.msg('开发中...', { icon: 6 });
+            }
+        });
+    </script>
+}
+
+

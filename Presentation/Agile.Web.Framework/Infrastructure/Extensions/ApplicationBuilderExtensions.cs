@@ -1,4 +1,5 @@
 ﻿using Agile.Core.Infrastructure;
+using Agile.Services.Plugins;
 using Agile.Web.Framework.Mvc.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -20,7 +21,11 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
 
         public static void StartEngine(this IApplicationBuilder application)
         {
-            //quartz
+            var engine = EngineContext.Current;
+
+            var pluginService = engine.Resolve<IPluginService>();
+
+            pluginService.InstallPlugins();
         }
 
         public static void UseAgileEndpoints(this IApplicationBuilder application)
@@ -79,7 +84,7 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                     var originalQueryString = context.HttpContext.Request.QueryString;
                     try
                     {
-                        var pageNotFoundPath = "/page-not-found";
+                        var pageNotFoundPath = "/Admin/Common/PageNotFound";
                         context.HttpContext.Response.Redirect(context.HttpContext.Request.PathBase + pageNotFoundPath);
                     }
                     finally

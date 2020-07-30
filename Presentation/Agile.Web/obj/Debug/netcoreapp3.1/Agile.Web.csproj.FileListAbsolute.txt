@@ -1,5 +1,6 @@
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\App_Data\plugins.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Web.exe
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Web.deps.json
@@ -370,9 +371,11 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\t
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Core.dll
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Services.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Web.Framework.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Core.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Web.Framework.pdb
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Services.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.csprojAssemblyReference.cache
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.AssemblyInfoInputs.cache
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.AssemblyInfo.cs
@@ -385,11 +388,15 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\A
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.TagHelpers.output.cache
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.RazorCoreGenerate.cache
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Login.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Common\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Common\PageNotFound.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Plugin\List.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Plugin\UploadPlugins.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Default\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ListLayout.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
@@ -402,3 +409,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\s
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.genruntimeconfig.cache
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.Erp\Agile.Plugin.Erp.deps.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.Erp\plugin.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Test\Index.cshtml.g.cs

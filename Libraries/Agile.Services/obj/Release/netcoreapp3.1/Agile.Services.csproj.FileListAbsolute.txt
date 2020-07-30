@@ -1,0 +1,12 @@
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Services.deps.json
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Services.dll
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Services.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Core.dll
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Core.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.csprojAssemblyReference.cache
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.AssemblyInfoInputs.cache
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.AssemblyInfo.cs
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.csproj.CoreCompileInputs.cache
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.csproj.CopyComplete
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.dll
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.pdb

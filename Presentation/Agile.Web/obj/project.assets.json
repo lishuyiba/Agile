@@ -1948,11 +1948,26 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Agile.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Agile.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Agile.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Agile.Services.dll": {}
+        }
+      },
       "Agile.Web.Framework/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Agile.Core": "1.0.0",
+          "Agile.Services": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.6",
           "Newtonsoft.Json": "12.0.3"
         },
@@ -6493,6 +6508,11 @@
       "type": "project",
       "path": "../../Libraries/Agile.Core/Agile.Core.csproj",
       "msbuildProject": "../../Libraries/Agile.Core/Agile.Core.csproj"
+    },
+    "Agile.Services/1.0.0": {
+      "type": "project",
+      "path": "../../Libraries/Agile.Services/Agile.Services.csproj",
+      "msbuildProject": "../../Libraries/Agile.Services/Agile.Services.csproj"
     },
     "Agile.Web.Framework/1.0.0": {
       "type": "project",

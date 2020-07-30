@@ -25,6 +25,7 @@
       "Agile.Web.Framework/1.0.0": {
         "dependencies": {
           "Agile.Core": "1.0.0",
+          "Agile.Services": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.6",
           "Newtonsoft.Json": "12.0.3",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -576,6 +577,18 @@
         },
         "compile": {
           "Agile.Core.dll": {}
+        }
+      },
+      "Agile.Services/1.0.0": {
+        "dependencies": {
+          "Agile.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "Agile.Services.dll": {}
+        },
+        "compile": {
+          "Agile.Services.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2420,6 +2433,11 @@
       "hashPath": "system.threading.tasks.extensions.4.5.3.nupkg.sha512"
     },
     "Agile.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Agile.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -20,7 +20,7 @@ namespace Agile.Web.Framework.Infrastructure
 
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-
+            services.AddThemes();
         }
     }
 }

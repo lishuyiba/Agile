@@ -1,0 +1,20 @@
+﻿{
+  "InstalledPluginNames": [
+    "Obsolete field, using only for compatibility"
+  ],
+  "InstalledPlugins": [
+    {
+      "SystemName": "Agile.Plugin.Blog",
+      "Version": "1.60"
+    },
+    {
+      "SystemName": "Agile.Plugin.Cms",
+      "Version": "1.60"
+    }
+  ],
+  "PluginNamesToUninstall": [],
+  "PluginNamesToDelete": [
+    "Agile.Plugin.Erp"
+  ],
+  "PluginNamesToInstall": []
+}

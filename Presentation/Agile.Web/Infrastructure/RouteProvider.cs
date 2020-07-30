@@ -12,11 +12,11 @@ namespace Agile.Web.Infrastructure
     {
         public void RegisterRoutes(IEndpointRouteBuilder endpointRouteBuilder)
         {
-            endpointRouteBuilder.MapControllerRoute(name: "areaRoute", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
             endpointRouteBuilder.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            endpointRouteBuilder.MapControllerRoute("defaultRoute", $"/Default/", new { controller = "Default", action = "Index" });
+            endpointRouteBuilder.MapControllerRoute(name: "areaRoute", pattern: "{area:exists}/{controller=Test}/{action=Index}/{id?}");
+
+            endpointRouteBuilder.MapAreaControllerRoute("restartApplicationRoute", "Admin", $"/restart/", new { controller = "Common", action = "RestartApplication" });
         }
 
         public int Priority => 0;

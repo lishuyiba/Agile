@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "UploadPlugins";
+}
+
+@*<form action="/admin/plugin/UploadPlugins" method="post">
+
+    <input type="file" name="name" value="archivefile" />
+
+    <input type="submit" name="name" value="" />
+
+</form>*@
+
+<form method="post" enctype="multipart/form-data" action="/admin/plugin/UploadPlugins">
+    <div>
+        <div>
+            <p>Form表单多个上传文件:</p>
+            <input type="file" name="archivefile" multiple />
+            <input type="submit" value="上传" />
+        </div>
+    </div>
+</form>

@@ -1647,9 +1647,22 @@
           "Agile.Core.dll": {}
         }
       },
+      "Agile.Services/1.0.0": {
+        "dependencies": {
+          "Agile.Core": "1.0.0",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "Agile.Services.dll": {}
+        },
+        "compile": {
+          "Agile.Services.dll": {}
+        }
+      },
       "Agile.Web.Framework/1.0.0": {
         "dependencies": {
           "Agile.Core": "1.0.0",
+          "Agile.Services": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.6",
           "Newtonsoft.Json": "12.0.3"
         },
@@ -4167,6 +4180,11 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "Agile.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Agile.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

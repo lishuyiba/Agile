@@ -4,7 +4,15 @@ using System.Text;
 
 namespace Agile.Services.Plugins
 {
-    public interface IPluginService
+    public partial interface IPluginService
     {
+        PluginDescriptor GetPluginDescriptorBySystemName(string systemName);
+        IEnumerable<PluginDescriptor> GetPluginDescriptors();
+        void InstallPlugins();
+        void UninstallPlugins();
+        bool IsRestartRequired();
+        void PreparePluginToInstall(string systemName);
+        void PreparePluginToUninstall(string systemName);
+        void PreparePluginToDelete(string systemName);
     }
 }
