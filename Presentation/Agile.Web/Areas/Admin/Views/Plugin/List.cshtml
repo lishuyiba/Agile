@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_ListLayout.cshtml";
+    bool b = (bool)ViewBag.IsRestartRequired;
 }
 
 <div class="layui-fluid">
@@ -34,10 +35,14 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        &emsp;
-                        <button class="layui-btn icon-btn" lay-filter="userTbSearch" lay-submit>
-                            <i class="layui-icon">&#xe615;</i>搜索
-                        </button>
+                        <div class="layui-input-inline">
+                            <button class="layui-btn icon-btn" lay-filter="userTbSearch" lay-submit><i class="layui-icon">&#xe615;</i>搜索</button>
+                            <button class="layui-btn icon-btn" lay-filter="restartApplication" lay-submit><i class="layui-icon">&#xe615;</i>重启系统</button>
+                        </div>
+                        @if (b)
+                        {
+                            <div class="layui-form-mid layui-word-aux">检测插件变更，请重新系统以便于插件生效！</div>
+                        }
                     </div>
                 </div>
             </form>
@@ -50,12 +55,17 @@
 @section Scripts{
     <!-- 表格操作列 -->
     <script type="text/html" id="userTbBar">
-        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">更新</a>
-        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit">安装</a>
-        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="edit">卸载</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="edit">删除</a>
+        {{#  if(d.state==="未安装"){ }}
+        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="install">安装</a>
+        {{#  } else { }}
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="uninstall">卸载</a>
+        {{#  } }}
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
     </script>
 
+    <script type="text/html" id="toolbar">
+        <button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>安装插件</button>
+    </script>
 
     <script>
         layui.use(['layer', 'form', 'table', 'util', 'admin', 'xmSelect'], function () {
@@ -71,10 +81,7 @@
                 elem: '#userTable',
                 url: '/admin/plugin/getdata',
                 page: true,
-                toolbar: ['<p>',
-                    '<button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>&nbsp;',
-                    '<button lay-event="del" class="layui-btn layui-btn-sm layui-btn-danger icon-btn"><i class="layui-icon">&#xe640;</i>删除</button>',
-                    '</p>'].join(''),
+                toolbar: '#toolbar',
                 cellMinWidth: 100,
                 cols: [[
                     { type: 'checkbox' },
@@ -95,6 +102,24 @@
                 return false;
             });
 
+            form.on('submit(restartApplication)', function (data) {
+                //insTb.reload({ where: data.field, page: { curr: 1 } });
+
+                $.get('/admin/common/restartApplication', '', function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
+                    console.log(res);
+                });
+                return false;
+            });
+
+            form.on('submit(applyChanges)', function (data) {
+                //insTb.reload({ where: data.field, page: { curr: 1 } });
+
+                $.get('/admin/plugin/applyChanges', '', function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
+                    console.log(res);
+                });
+                return false;
+            });
+
             /* 表格工具条点击事件 */
             table.on('tool(userTable)', function (obj) {
                 if (obj.event === 'edit') { // 修改
@@ -103,6 +128,25 @@
                     doDel(obj);
                 } else if (obj.event === 'reset') { // 重置密码
                     resetPsw(obj);
+                }
+                var systemName = obj.data.systemName;
+                if (obj.event === 'install') {
+                    $.get('/admin/plugin/install', { systemName: systemName }, function (data) {  // 实际项目这里url可以是mData?'user/update':'user/add'
+                        layer.msg(data, { icon: 1 });
+                        table.reload();
+                    });
+                }
+                if (obj.event === 'uninstall') {
+                    $.get('/admin/plugin/uninstall', { systemName: systemName }, function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
+                        layer.msg(data, { icon: 1 });
+                        table.reload();
+                    });
+                }
+                if (obj.event === 'delete') {
+                    $.get('/admin/plugin/delete', { systemName: systemName }, function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
+                        layer.msg(data, { icon: 1 });
+                        table.reload();
+                    });
                 }
             });
 
@@ -117,7 +161,16 @@
 
             /* 显示表单弹窗 */
             function showEditModel(mData) {
-                layer.msg('开发中...', { icon: 6 });
+                //layer.msg('开发中...', { icon: 6 });
+                admin.open({
+                    type: 2,
+                    title: '安装插件',
+                    content: "/admin/plugin/UploadPlugins",
+                    success: function (layero, dIndex) {
+
+                    }
+                });
+
             }
 
             /* 删除 */

@@ -24,7 +24,8 @@ namespace Agile.Web
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder
-                        .UseStartup<Startup>();
+                    //.UseIIS()
+                    .UseStartup<Startup>();
                 });
         }
     }

@@ -14,5 +14,7 @@ namespace Agile.Services.Plugins
         void PreparePluginToInstall(string systemName);
         void PreparePluginToUninstall(string systemName);
         void PreparePluginToDelete(string systemName);
+        void DeletePlugins();
+        void ClearPlugins(string systemName);
     }
 }

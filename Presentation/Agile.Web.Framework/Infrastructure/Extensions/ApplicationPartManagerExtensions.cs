@@ -44,14 +44,6 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             }
         }
 
-        private static void LoadPluginsInfo(AgileConfig config)
-        {
-            PluginsInfo = new PluginsInfo(_fileProvider);
-
-            if (PluginsInfo.LoadPluginInfo())
-                return;
-        }
-
         public static void InitializePlugins(this ApplicationPartManager applicationPartManager, AgileConfig config)
         {
             if (applicationPartManager == null)
@@ -60,13 +52,13 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             if (config == null)
                 throw new ArgumentNullException(nameof(config));
 
-            LoadPluginsInfo(config);
+            PluginsInfo = new PluginsInfo(_fileProvider);
+
+            PluginsInfo.LoadPluginInfo();
 
             using (new ReaderWriteLockDisposable(_locker))
             {
                 var pluginDescriptors = new List<PluginDescriptor>();
-                var incompatiblePlugins = new List<string>();
-
                 try
                 {
                     var pluginsDirectory = _fileProvider.MapPath(AgilePluginDefaults.Path);
@@ -82,46 +74,30 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                         var descriptionFile = item.DescriptionFile;
                         var pluginDescriptor = item.PluginDescriptor;
 
-                        if (!pluginDescriptor.SupportedVersions.Contains(AgileVersion.CurrentVersion, StringComparer.InvariantCultureIgnoreCase))
-                        {
-                            incompatiblePlugins.Add(pluginDescriptor.SystemName);
-                            continue;
-                        }
-
-                        if (string.IsNullOrEmpty(pluginDescriptor.SystemName?.Trim()))
-                        {
-                            throw new Exception($"A plugin '{descriptionFile}' has no system name. Try assigning the plugin a unique name and recompiling.");
-                        }
-
-                        if (pluginDescriptors.Contains(pluginDescriptor))
-                            throw new Exception($"A plugin with '{pluginDescriptor.SystemName}' system name is already defined");
-
-                        pluginDescriptor.Installed = PluginsInfo.InstalledPlugins.Select(pd => pd.SystemName)
-                            .Any(pluginName => pluginName.Equals(pluginDescriptor.SystemName, StringComparison.InvariantCultureIgnoreCase));
+                        //判断插件是否已被安装
+                        var installedPugins = PluginsInfo.InstalledPlugins.Select(pd => pd.SystemName);
+                        pluginDescriptor.Installed = installedPugins.Any(pluginName => pluginName.Equals(pluginDescriptor.SystemName, StringComparison.InvariantCultureIgnoreCase));
 
                         try
                         {
+                            //获取插件目录
                             var pluginDirectory = _fileProvider.GetDirectoryName(descriptionFile);
                             if (string.IsNullOrEmpty(pluginDirectory))
                             {
-                                throw new Exception($"Directory cannot be resolved for '{_fileProvider.GetFileName(descriptionFile)}' description file");
+                                throw new Exception($"插件目录'{_fileProvider.GetFileName(descriptionFile)}'不存在！");
                             }
 
+                            //获取插件目录下所有程序集
                             var pluginFiles = _fileProvider.GetFiles(pluginDirectory, "*.dll", false)
                                 .Where(file => !binFiles.Contains(file) && IsPluginDirectory(_fileProvider.GetDirectoryName(file)))
                                 .ToList();
 
+                            //读取插件程序集
                             var mainPluginFile = pluginFiles.FirstOrDefault(file =>
                             {
                                 var fileName = _fileProvider.GetFileName(file);
                                 return fileName.Equals(pluginDescriptor.AssemblyFileName, StringComparison.InvariantCultureIgnoreCase);
                             });
-
-                            if (mainPluginFile == null)
-                            {
-                                incompatiblePlugins.Add(pluginDescriptor.SystemName);
-                                continue;
-                            }
 
                             var pluginName = pluginDescriptor.SystemName;
 
@@ -133,37 +109,21 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
 
                             needToDeploy = needToDeploy && !PluginsInfo.PluginNamesToDelete.Contains(pluginName);
 
+                            needToDeploy = needToDeploy && !PluginsInfo.PluginNamesToUninstall.Contains(pluginName);
+
                             if (needToDeploy)
                             {
                                 pluginDescriptor.ReferencedAssembly = applicationPartManager.PerformFileDeploy(mainPluginFile, shadowCopyDirectory, config, _fileProvider);
 
-                                var filesToDeploy = pluginFiles.Where(file =>
-                                    !_fileProvider.GetFileName(file).Equals(_fileProvider.GetFileName(mainPluginFile)) &&
-                                    !IsAlreadyLoaded(file, pluginName)).ToList();
-                                foreach (var file in filesToDeploy)
-                                {
-                                    applicationPartManager.PerformFileDeploy(file, shadowCopyDirectory, config, _fileProvider);
-                                }
-
-
-                                foreach (var file in pluginFiles)
-                                {
-                                    if (!_fileProvider.GetFileName(file).Equals(_fileProvider.GetFileName(mainPluginFile))&& !IsAlreadyLoaded(file, pluginName))
-                                    {
-                                        continue;
-                                    }
-                                    filesToDeploy.Add(file);
-                                }
-
                                 var pluginType = pluginDescriptor.ReferencedAssembly.GetTypes().FirstOrDefault();
 
                                 if (pluginType != default)
+                                {
                                     pluginDescriptor.PluginType = pluginType;
+                                }
+
+                                pluginDescriptor.IsRestartActivate = false;
                             }
-
-                            if (PluginsInfo.PluginNamesToDelete.Contains(pluginName))
-                                continue;
-
                             pluginDescriptors.Add(pluginDescriptor);
                         }
                         catch (ReflectionTypeLoadException exception)
@@ -189,10 +149,6 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                 }
 
                 PluginsInfo.PluginDescriptors = pluginDescriptors;
-
-                PluginsInfo.IncompatiblePlugins = incompatiblePlugins;
-                PluginsInfo.AssemblyLoadedCollision = _loadedAssemblies.Select(item => item.Value)
-                    .Where(loadedAssemblyInfo => loadedAssemblyInfo.Collisions.Any()).ToList();
             }
         }
 

@@ -10,27 +10,28 @@ namespace Agile.Services.Plugins
     {
 
         private readonly IPluginsInfo _pluginsInfo;
+        private readonly IAgileFileProvider _fileProvider;
 
-        public PluginService()
+        public PluginService(IAgileFileProvider fileProvider)
         {
+            _fileProvider = fileProvider;
             _pluginsInfo = Singleton<IPluginsInfo>.Instance;
         }
 
         public void InstallPlugins()
         {
             var pluginDescriptors = _pluginsInfo.PluginDescriptors.Where(descriptor => !descriptor.Installed).ToList();
-
-            pluginDescriptors = pluginDescriptors.Where(descriptor => _pluginsInfo.PluginNamesToInstall
-                .Any(item => item.Equals(descriptor.SystemName))).ToList();
+            pluginDescriptors = pluginDescriptors.Where(descriptor => _pluginsInfo.PluginNamesToInstall.Any(item => item.Equals(descriptor.SystemName))).ToList();
             if (!pluginDescriptors.Any())
+            {
                 return;
-
+            }
             foreach (var descriptor in pluginDescriptors.OrderBy(pluginDescriptor => pluginDescriptor.DisplayOrder))
             {
                 try
                 {
-                    var pluginToInstall = _pluginsInfo.PluginNamesToInstall
-                        .FirstOrDefault(plugin => plugin.Equals(descriptor.SystemName));
+                    var pluginToInstall = _pluginsInfo.PluginNamesToInstall.FirstOrDefault(plugin => plugin.Equals(descriptor.SystemName));
+
                     _pluginsInfo.InstalledPlugins.Add(descriptor.GetBaseInfoCopy);
                     _pluginsInfo.PluginNamesToInstall.Remove(pluginToInstall);
 
@@ -97,12 +98,9 @@ namespace Agile.Services.Plugins
         public virtual void PreparePluginToInstall(string systemName)
         {
             if (_pluginsInfo.PluginNamesToInstall.Any(item => item == systemName))
+            {
                 return;
-
-            var pluginsAfterRestart = _pluginsInfo.InstalledPlugins.Select(pd => pd.SystemName).Where(installedSystemName => !_pluginsInfo.PluginNamesToUninstall.Contains(installedSystemName)).ToList();
-
-            pluginsAfterRestart.AddRange(_pluginsInfo.PluginNamesToInstall.Select(item => item));
-
+            }
             _pluginsInfo.PluginNamesToInstall.Add(systemName);
             _pluginsInfo.Save();
         }
@@ -120,30 +118,9 @@ namespace Agile.Services.Plugins
         public virtual void PreparePluginToUninstall(string systemName)
         {
             if (_pluginsInfo.PluginNamesToUninstall.Contains(systemName))
-                return;
-            var dependentPlugins = GetPluginDescriptors(systemName).ToList();
-            var descriptor = GetPluginDescriptorBySystemName<IPlugin>(systemName);
-
-            if (dependentPlugins.Any())
             {
-                var dependsOn = new List<string>();
-
-                foreach (var dependentPlugin in dependentPlugins)
-                {
-                    if (!_pluginsInfo.InstalledPlugins.Select(pd => pd.SystemName).Contains(dependentPlugin.SystemName))
-                        continue;
-                    if (_pluginsInfo.PluginNamesToUninstall.Contains(dependentPlugin.SystemName))
-                        continue;
-
-                    dependsOn.Add(string.IsNullOrEmpty(dependentPlugin.FriendlyName)
-                        ? dependentPlugin.SystemName
-                        : dependentPlugin.FriendlyName);
-                }
+                return;
             }
-
-            var plugin = descriptor?.Instance<IPlugin>();
-            plugin?.PreparePluginToUninstall();
-
             _pluginsInfo.PluginNamesToUninstall.Add(systemName);
             _pluginsInfo.Save();
         }
@@ -154,6 +131,50 @@ namespace Agile.Services.Plugins
                 return;
 
             _pluginsInfo.PluginNamesToDelete.Add(systemName);
+            _pluginsInfo.Save();
+        }
+
+        public virtual void DeletePlugins()
+        {
+            var pluginDescriptors = _pluginsInfo.PluginDescriptors.Where(descriptor => !descriptor.Installed).ToList();
+
+            pluginDescriptors = pluginDescriptors.Where(descriptor => _pluginsInfo.PluginNamesToDelete.Contains(descriptor.SystemName)).ToList();
+            if (!pluginDescriptors.Any())
+                return;
+
+            foreach (var descriptor in pluginDescriptors)
+            {
+                try
+                {
+                    var pluginDirectory = _fileProvider.GetDirectoryName(descriptor.OriginalAssemblyFile);
+                    if (_fileProvider.DirectoryExists(pluginDirectory))
+                    {
+                        _fileProvider.DeleteDirectory(pluginDirectory);
+                    }
+
+                    _pluginsInfo.PluginDescriptors.Remove(descriptor);
+
+                    _pluginsInfo.PluginNamesToDelete.Remove(descriptor.SystemName);
+                }
+                catch (Exception exception)
+                {
+                }
+            }
+            _pluginsInfo.Save();
+        }
+
+        public void ClearPlugins(string systemName)
+        {
+            var pluginDescriptors = _pluginsInfo.PluginNamesToDelete.Where(s => s.Contains(systemName)).Any();
+            if (pluginDescriptors)
+            {
+                _pluginsInfo.PluginNamesToDelete.Remove(systemName);
+            }
+            pluginDescriptors = _pluginsInfo.PluginNamesToUninstall.Where(s => s.Contains(systemName)).Any();
+            if (pluginDescriptors)
+            {
+                _pluginsInfo.PluginNamesToUninstall.Remove(systemName);
+            }
             _pluginsInfo.Save();
         }
     }

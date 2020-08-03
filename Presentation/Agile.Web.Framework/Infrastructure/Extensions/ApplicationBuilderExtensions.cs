@@ -26,6 +26,8 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             var pluginService = engine.Resolve<IPluginService>();
 
             pluginService.InstallPlugins();
+            pluginService.UninstallPlugins();
+            pluginService.DeletePlugins();
         }
 
         public static void UseAgileEndpoints(this IApplicationBuilder application)

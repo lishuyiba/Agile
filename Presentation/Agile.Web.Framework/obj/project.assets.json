@@ -374,7 +374,10 @@
         },
         "runtime": {
           "bin/placeholder/Agile.Services.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

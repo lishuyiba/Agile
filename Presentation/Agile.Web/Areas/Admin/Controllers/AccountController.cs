@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agile.Web.Areas.Admin.Controllers
 {
-    [Area(AreaNames.Admin)]
-    public class AccountController : Controller
+    public class AccountController : BaseAdminController
     {
         public IActionResult Login()
         {

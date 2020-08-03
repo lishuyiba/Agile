@@ -117,5 +117,8 @@ namespace Agile.Services.Plugins
 
         [JsonIgnore]
         public virtual bool ShowInPluginsList { get; set; } = true;
+
+        [JsonIgnore]
+        public virtual bool IsRestartActivate { get; set; } = true;
     }
 }

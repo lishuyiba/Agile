@@ -123,7 +123,6 @@ namespace Agile.Services.Plugins
                     descriptors.Add(descriptor);
                 }
             }
-
             return descriptors;
         }
 

@@ -53,8 +53,6 @@ namespace Agile.Services.Plugins
         protected virtual bool DeserializePluginInfo(string json)
         {
             var pluginsInfo = JsonConvert.DeserializeObject<PluginsInfo>(json);
-
-            InstalledPluginNames = pluginsInfo.InstalledPluginNames;
             InstalledPlugins = pluginsInfo.InstalledPlugins;
             PluginNamesToUninstall = pluginsInfo.PluginNamesToUninstall;
             PluginNamesToDelete = pluginsInfo.PluginNamesToDelete;
@@ -102,22 +100,6 @@ namespace Agile.Services.Plugins
             AssemblyLoadedCollision = pluginsInfo.AssemblyLoadedCollision?.ToList();
             PluginDescriptors = pluginsInfo.PluginDescriptors?.ToList();
             IncompatiblePlugins = pluginsInfo.IncompatiblePlugins?.ToList();
-        }
-
-        public virtual IList<string> InstalledPluginNames
-        {
-            get
-            {
-                if (_installedPlugins.Any())
-                    _installedPluginNames.Clear();
-
-                return _installedPluginNames.Any() ? _installedPluginNames : new List<string> { OBSOLETE_FIELD };
-            }
-            set
-            {
-                if (value?.Any() ?? false)
-                    _installedPluginNames = value.ToList();
-            }
         }
 
         public virtual IList<PluginDescriptorBaseInfo> InstalledPlugins

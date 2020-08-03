@@ -1,13 +1,5 @@
 ﻿{
-  "InstalledPluginNames": [
-    "Obsolete field, using only for compatibility"
-  ],
-  "InstalledPlugins": [
-    {
-      "SystemName": "Agile.Plugin.Erp",
-      "Version": "1.60"
-    }
-  ],
+  "InstalledPlugins": [],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
   "PluginNamesToInstall": []

@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agile.Web.Areas.Admin.Controllers
 {
-    [Area(AreaNames.Admin)]
-    public class CommonController : Controller
+    public class CommonController : BaseAdminController
     {
         private readonly IWebHelper _webHelper;
 
@@ -31,6 +30,11 @@ namespace Agile.Web.Areas.Admin.Controllers
         }
 
         public IActionResult PageNotFound()
+        {
+            return View();
+        }
+
+        public IActionResult Theme()
         {
             return View();
         }
