@@ -1,5 +1,18 @@
 ﻿{
-  "InstalledPlugins": [],
+  "InstalledPlugins": [
+    {
+      "SystemName": "Agile.Plugin.Cms",
+      "Version": "1.0.0"
+    },
+    {
+      "SystemName": "Agile.Plugin.Blog",
+      "Version": "1.0.0"
+    },
+    {
+      "SystemName": "Agile.Plugin.Erp",
+      "Version": "1.0.0"
+    }
+  ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
   "PluginNamesToInstall": []

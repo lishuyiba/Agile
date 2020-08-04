@@ -99,7 +99,7 @@ namespace Agile.Web.Areas.Admin.Controllers
             {
                 return Content("插件已安装，请勿重新安装！");
             }
-            var isRestartRequired = _pluginService.IsRestartRequired();
+            var isRestartRequired = _pluginService.ChangePlugin(pluginDescriptor.SystemName);
             if (isRestartRequired)
             {
                 return Content("重启状态已存在，请在重启系统后再操作！");
@@ -119,7 +119,7 @@ namespace Agile.Web.Areas.Admin.Controllers
             {
                 return Content("插件未安装，无需卸载！");
             }
-            var isRestartRequired = _pluginService.IsRestartRequired();
+            var isRestartRequired = _pluginService.ChangePlugin(pluginDescriptor.SystemName);
             if (isRestartRequired)
             {
                 return Content("重启状态已存在，请在重启系统后再操作！");
@@ -156,7 +156,7 @@ namespace Agile.Web.Areas.Admin.Controllers
             {
                 return Content("插件已安装，无法删除！");
             }
-            var isRestartRequired = _pluginService.IsRestartRequired();
+            var isRestartRequired = _pluginService.ChangePlugin(pluginDescriptor.SystemName);
             if (isRestartRequired)
             {
                 return Content("重启状态已存在，请在重启系统后再操作！");

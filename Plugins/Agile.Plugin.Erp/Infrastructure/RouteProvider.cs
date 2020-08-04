@@ -11,7 +11,7 @@ namespace Agile.Plugin.Erp.Infrastructure
     {
         public void RegisterRoutes(IEndpointRouteBuilder endpointRouteBuilder)
         {
-            //endpointRouteBuilder.MapControllerRoute(name: "areaRoute", pattern: "{area:exists}/{controller=Test}/{action=Index}/{id?}");
+            endpointRouteBuilder.MapAreaControllerRoute(name: "areaRoute", "erp", pattern: "{area:exists}/{controller=Test}/{action=Index}/{id?}");
         }
         public int Priority => 0;
     }

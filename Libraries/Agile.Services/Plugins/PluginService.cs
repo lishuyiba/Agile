@@ -175,5 +175,12 @@ namespace Agile.Services.Plugins
             }
             _pluginsInfo.Save();
         }
+
+        public bool ChangePlugin(string systemName)
+        {
+            return _pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(systemName))
+                 || _pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(systemName))
+                 || _pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(systemName));
+        }
     }
 }

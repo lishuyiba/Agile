@@ -11,6 +11,7 @@ namespace Agile.Services.Plugins
         void InstallPlugins();
         void UninstallPlugins();
         bool IsRestartRequired();
+        bool ChangePlugin(string systemName);
         void PreparePluginToInstall(string systemName);
         void PreparePluginToUninstall(string systemName);
         void PreparePluginToDelete(string systemName);
