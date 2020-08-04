@@ -121,21 +121,19 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                                 {
                                     pluginDescriptor.PluginType = pluginType;
                                 }
-
-                                pluginDescriptor.IsRestartActivate = false;
                             }
                             pluginDescriptors.Add(pluginDescriptor);
                         }
                         catch (ReflectionTypeLoadException exception)
                         {
-                            var error = exception.LoaderExceptions.Aggregate($"Plugin '{pluginDescriptor.FriendlyName}'. ",
-                                (message, nextMessage) => $"{message}{nextMessage.Message}{Environment.NewLine}");
+                            var error = exception.LoaderExceptions.Aggregate($"Plugins '{pluginDescriptor.SystemName}'. "
+                                , (message, nextMessage) => $"{message}{nextMessage.Message}{Environment.NewLine}");
 
                             throw new Exception(error, exception);
                         }
                         catch (Exception exception)
                         {
-                            throw new Exception($"Plugin '{pluginDescriptor.FriendlyName}'. {exception.Message}", exception);
+                            throw new Exception($"Plugin '{pluginDescriptor.SystemName}'. {exception.Message}", exception);
                         }
                     }
                 }

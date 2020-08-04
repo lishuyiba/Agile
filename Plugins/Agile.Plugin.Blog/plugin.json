@@ -1,10 +1,8 @@
 ﻿{
-  "Group": "Shipping rate computation",
-  "FriendlyName": "UPS (United Parcel Service)",
+  "Group": "个人应用",
   "SystemName": "Agile.Plugin.Blog",
-  "Version": "1.60",
-  "SupportedVersions": [ "4.30" ],
-  "Author": "nopCommerce team",
+  "Version": "1.0.0",
+  "Author": "lsoey",
   "DisplayOrder": 1,
   "FileName": "Agile.Plugin.Blog.dll",
   "Description": "博客系统插件"

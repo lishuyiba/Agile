@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_ListLayout.cshtml";
-    bool b = (bool)ViewBag.IsRestartRequired;
 }
 
 <div class="layui-fluid">
@@ -39,10 +38,6 @@
                             <button class="layui-btn icon-btn" lay-filter="userTbSearch" lay-submit><i class="layui-icon">&#xe615;</i>搜索</button>
                             <button class="layui-btn icon-btn" lay-filter="restartApplication" lay-submit><i class="layui-icon">&#xe615;</i>重启系统</button>
                         </div>
-                        @if (b)
-                        {
-                            <div class="layui-form-mid layui-word-aux">检测插件变更，请重新系统以便于插件生效！</div>
-                        }
                     </div>
                 </div>
             </form>
@@ -55,11 +50,8 @@
 @section Scripts{
     <!-- 表格操作列 -->
     <script type="text/html" id="userTbBar">
-        {{#  if(d.state==="未安装"){ }}
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="install">安装</a>
-        {{#  } else { }}
-    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="uninstall">卸载</a>
-        {{#  } }}
+        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="uninstall">卸载</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
     </script>
 
@@ -76,7 +68,6 @@
             var util = layui.util;
             var admin = layui.admin;
             var xmSelect = layui.xmSelect;
-            /* 渲染表格 */
             var insTb = table.render({
                 elem: '#userTable',
                 url: '/admin/plugin/getdata',
@@ -86,82 +77,50 @@
                 cols: [[
                     { type: 'checkbox' },
                     { type: 'numbers' },
-                    { field: 'systemName', title: 'SystemName', sort: true },
-                    { field: 'state', title: 'State', sort: true },
-                    { field: 'author', title: 'Author', sort: true },
-                    { field: 'description', title: 'Description', sort: true },
+                    { field: 'group', title: '分组', sort: true },
+                    { field: 'systemName', title: '系统名称', sort: true },
+                    { field: 'author', title: '作者', sort: true },
+                    { field: 'version', title: '版本号', sort: true },
+                    { field: 'assemblyFileName', title: '程序集名称', sort: true },
+                    { field: 'state', title: '当前状态', sort: true },
+                    { field: 'restartState', title: '重启状态', sort: true },
+                    { field: 'description', title: '备注', sort: true },
                     { title: '操作', toolbar: '#userTbBar', align: 'center', minWidth: 200 }
                 ]]
             });
 
-            /* 表格搜索 */
             form.on('submit(userTbSearch)', function (data) {
-                //insTb.reload({ where: data.field, page: { curr: 1 } });
-
                 layer.msg('开发中...', { icon: 6 });
                 return false;
             });
 
             form.on('submit(restartApplication)', function (data) {
-                //insTb.reload({ where: data.field, page: { curr: 1 } });
-
-                $.get('/admin/common/restartApplication', '', function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
-                    console.log(res);
-                });
+                doRestartApplication();
                 return false;
             });
 
-            form.on('submit(applyChanges)', function (data) {
-                //insTb.reload({ where: data.field, page: { curr: 1 } });
-
-                $.get('/admin/plugin/applyChanges', '', function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
-                    console.log(res);
-                });
-                return false;
-            });
-
-            /* 表格工具条点击事件 */
             table.on('tool(userTable)', function (obj) {
-                if (obj.event === 'edit') { // 修改
-                    showEditModel(obj.data);
-                } else if (obj.event === 'del') { // 删除
-                    doDel(obj);
-                } else if (obj.event === 'reset') { // 重置密码
-                    resetPsw(obj);
-                }
                 var systemName = obj.data.systemName;
                 if (obj.event === 'install') {
-                    $.get('/admin/plugin/install', { systemName: systemName }, function (data) {  // 实际项目这里url可以是mData?'user/update':'user/add'
-                        layer.msg(data, { icon: 1 });
-                        table.reload();
-                    });
+                    doInstall(systemName);
                 }
                 if (obj.event === 'uninstall') {
-                    $.get('/admin/plugin/uninstall', { systemName: systemName }, function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
-                        layer.msg(data, { icon: 1 });
-                        table.reload();
-                    });
+                    doUnInstall(systemName);
                 }
                 if (obj.event === 'delete') {
-                    $.get('/admin/plugin/delete', { systemName: systemName }, function (res) {  // 实际项目这里url可以是mData?'user/update':'user/add'
-                        layer.msg(data, { icon: 1 });
-                        table.reload();
-                    });
+                    doDelete(systemName);
                 }
             });
 
-            /* 表格头工具栏点击事件 */
             table.on('toolbar(userTable)', function (obj) {
-                if (obj.event === 'add') { // 添加
-                    showEditModel();
-                } else if (obj.event === 'del') { // 删除
-                    layer.msg('开发中...', { icon: 6 });
+                if (obj.event === 'add') {
+                    showEditModel(obj.data);
                 }
             });
 
-            /* 显示表单弹窗 */
+            doRestartMsg();
+
             function showEditModel(mData) {
-                //layer.msg('开发中...', { icon: 6 });
                 admin.open({
                     type: 2,
                     title: '安装插件',
@@ -173,9 +132,36 @@
 
             }
 
-            /* 删除 */
-            function doDel(obj) {
-                layer.msg('开发中...', { icon: 6 });
+            function doInstall(systemName) {
+                $.get('/admin/plugin/install', { systemName: systemName }, function (res) {
+                    layer.msg(res, { icon: 1 });
+                });
+            }
+
+            function doRestartApplication() {
+                $.get('/admin/common/restartApplication', '', function (res) {
+                    console.log(res);
+                });
+            }
+
+            function doUnInstall(systemName) {
+                $.get('/admin/plugin/uninstall', { systemName: systemName }, function (res) {
+                    layer.msg(res, { icon: 1 });
+                });
+            }
+
+            function doDelete(systemName) {
+                $.get('/admin/plugin/delete', { systemName: systemName }, function (res) {
+                    layer.msg(res, { icon: 1 });
+                });
+            }
+
+            function doRestartMsg() {
+                $.get('/admin/plugin/isRestartRequired', {}, function (res) {
+                    if (res == true) {
+                        layer.msg("检测插件变更，请重新系统以便于插件生效！", { icon: 7 });
+                    }
+                });
             }
         });
     </script>

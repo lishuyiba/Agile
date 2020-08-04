@@ -27,7 +27,6 @@ namespace Agile.Web.Areas.Admin.Controllers
         }
         public IActionResult List()
         {
-            ViewBag.IsRestartRequired = _pluginService.IsRestartRequired();
             return View();
         }
 
@@ -37,41 +36,40 @@ namespace Agile.Web.Areas.Admin.Controllers
             var pluginDescriptors = _pluginService.GetPluginDescriptors().ToList();
             foreach (var pluginDescriptor in pluginDescriptors)
             {
-                var installed = _pluginsInfo.InstalledPlugins.Where(s => s.SystemName.Contains(pluginDescriptor.SystemName)).Any();
-                var install = _pluginsInfo.PluginNamesToInstall.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-                var unInstall = _pluginsInfo.PluginNamesToUninstall.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-                var deleted = _pluginsInfo.PluginNamesToDelete.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-                var state = "未知";
-                if (installed)
+                var restartState = "";
+
+                var state = pluginDescriptor.Installed == true ? "已安装" : "未安装";
+
+                var toDelete = _pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(pluginDescriptor.SystemName));
+                var toInstall = _pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(pluginDescriptor.SystemName));
+                var toUnInstall = _pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(pluginDescriptor.SystemName));
+                if (toDelete)
                 {
-                    state = "已安装";
+                    restartState = "删除";
                 }
-                if (installed && unInstall)
+                else if (toInstall)
                 {
-                    state = "已安装（重启系统后将卸载）";
+                    restartState = "安装";
                 }
-                if (installed && deleted)
+                else if (toUnInstall)
                 {
-                    state = "已安装（重启系统后将删除）";
+                    restartState = "卸载";
                 }
-                if (!installed)
+                else
                 {
-                    state = "未安装";
+                    restartState = state;
                 }
-                if (!installed && deleted)
-                {
-                    state = "未安装（重启系统后将删除）";
-                }
-                if (!installed && install)
-                {
-                    state = "未安装（重启系统后将安装）";
-                }
+
                 var item = new
                 {
-                    pluginDescriptor.Author,
+                    pluginDescriptor.Group,
                     pluginDescriptor.SystemName,
+                    pluginDescriptor.Author,
+                    pluginDescriptor.Version,
+                    pluginDescriptor.AssemblyFileName,
                     pluginDescriptor.Description,
-                    state
+                    State = state,
+                    RestartState = restartState
                 };
                 results.Add(item);
             }
@@ -82,14 +80,6 @@ namespace Agile.Web.Areas.Admin.Controllers
                 count = results.Count,
                 data = results
             });
-        }
-
-        public IActionResult ApplyChanges()
-        {
-            _pluginService.UninstallPlugins();
-            _pluginService.DeletePlugins();
-            _webHelper.RestartAppDomain();
-            return new EmptyResult();
         }
 
         public IActionResult IsRestartRequired()
@@ -109,19 +99,12 @@ namespace Agile.Web.Areas.Admin.Controllers
             {
                 return Content("插件已安装，请勿重新安装！");
             }
-            var unInstall = _pluginsInfo.PluginNamesToUninstall.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-            if (unInstall)
+            var isRestartRequired = _pluginService.IsRestartRequired();
+            if (isRestartRequired)
             {
-                return Content("插件已在卸载队列，无法安装！");
-            }
-            var deleted = _pluginsInfo.PluginNamesToDelete.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-            if (deleted)
-            {
-                return Content("插件已在删除队列，无法安装！");
+                return Content("重启状态已存在，请在重启系统后再操作！");
             }
             _pluginService.PreparePluginToInstall(pluginDescriptor.SystemName);
-            pluginDescriptor.IsRestartActivate = true;
-
             return Content("ok");
         }
 
@@ -136,15 +119,12 @@ namespace Agile.Web.Areas.Admin.Controllers
             {
                 return Content("插件未安装，无需卸载！");
             }
-            var deleted = _pluginsInfo.PluginNamesToDelete.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-            if (deleted)
+            var isRestartRequired = _pluginService.IsRestartRequired();
+            if (isRestartRequired)
             {
-                return Content("插件已在删除队列，无法安装！");
+                return Content("重启状态已存在，请在重启系统后再操作！");
             }
             _pluginService.PreparePluginToUninstall(pluginDescriptor.SystemName);
-            pluginDescriptor.ShowInPluginsList = false;
-            pluginDescriptor.IsRestartActivate = true;
-
             return Content("ok");
         }
 
@@ -176,14 +156,12 @@ namespace Agile.Web.Areas.Admin.Controllers
             {
                 return Content("插件已安装，无法删除！");
             }
-            var unInstall = _pluginsInfo.PluginNamesToUninstall.Where(s => s.Contains(pluginDescriptor.SystemName)).Any();
-            if (unInstall)
+            var isRestartRequired = _pluginService.IsRestartRequired();
+            if (isRestartRequired)
             {
-                return Content("插件已在卸载队列，无法安装！");
+                return Content("重启状态已存在，请在重启系统后再操作！");
             }
             _pluginService.PreparePluginToDelete(pluginDescriptor.SystemName);
-            pluginDescriptor.ShowInPluginsList = false;
-
             return Content("ok");
         }
     }

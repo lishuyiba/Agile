@@ -87,7 +87,7 @@ namespace Agile.Services.Plugins
                     if (descriptor == null)
                         continue;
 
-                    if (descriptor is PluginDescriptor pluginDescriptor && !pluginDescriptor.SupportedVersions.Contains(AgileVersion.CurrentVersion))
+                    if (descriptor is PluginDescriptor pluginDescriptor)
                         continue;
 
                     var uploadedItemDirectoryName = _fileProvider.GetFileName(itemPath.TrimEnd('/'));
@@ -179,9 +179,6 @@ namespace Agile.Services.Plugins
                     if (isPluginDescriptor)
                     {
                         descriptor = PluginDescriptor.GetPluginDescriptorFromText(reader.ReadToEnd());
-
-                        if (!((PluginDescriptor)descriptor).SupportedVersions.Contains(AgileVersion.CurrentVersion))
-                            throw new Exception($"This plugin doesn't support the current version - {AgileVersion.CurrentVersion}");
                     }
 
                     if (isThemeDescriptor)

@@ -36,7 +36,6 @@ namespace Agile.Services.Plugins
                     _pluginsInfo.PluginNamesToInstall.Remove(pluginToInstall);
 
                     descriptor.Installed = true;
-                    descriptor.ShowInPluginsList = true;
                 }
                 catch (Exception exception)
                 {
@@ -63,7 +62,6 @@ namespace Agile.Services.Plugins
                     _pluginsInfo.PluginNamesToUninstall.Remove(descriptor.SystemName);
 
                     descriptor.Installed = false;
-                    descriptor.ShowInPluginsList = true;
                 }
                 catch (Exception exception)
                 {

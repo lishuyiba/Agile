@@ -12,7 +12,6 @@ namespace Agile.Services.Plugins
     {
         public PluginDescriptor()
         {
-            SupportedVersions = new List<string>();
             LimitedToStores = new List<int>();
             LimitedToCustomerRoles = new List<int>();
             DependsOn = new List<string>();
@@ -28,9 +27,6 @@ namespace Agile.Services.Plugins
                 return new PluginDescriptor();
 
             var descriptor = JsonConvert.DeserializeObject<PluginDescriptor>(text);
-
-            if (!descriptor.SupportedVersions.Any())
-                descriptor.SupportedVersions.Add("2.00");
 
             return descriptor;
         }
@@ -53,11 +49,6 @@ namespace Agile.Services.Plugins
             return string.Compare(SystemName, other.SystemName, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public override string ToString()
-        {
-            return FriendlyName;
-        }
-
         public virtual void Save()
         {
             var fileProvider = EngineContext.Current.Resolve<IAgileFileProvider>();
@@ -75,12 +66,6 @@ namespace Agile.Services.Plugins
 
         [JsonProperty(PropertyName = "Group")]
         public virtual string Group { get; set; }
-
-        [JsonProperty(PropertyName = "FriendlyName")]
-        public virtual string FriendlyName { get; set; }
-
-        [JsonProperty(PropertyName = "SupportedVersions")]
-        public virtual IList<string> SupportedVersions { get; set; }
 
         [JsonProperty(PropertyName = "Author")]
         public virtual string Author { get; set; }
@@ -114,11 +99,5 @@ namespace Agile.Services.Plugins
 
         [JsonIgnore]
         public virtual Assembly ReferencedAssembly { get; set; }
-
-        [JsonIgnore]
-        public virtual bool ShowInPluginsList { get; set; } = true;
-
-        [JsonIgnore]
-        public virtual bool IsRestartActivate { get; set; } = true;
     }
 }
