@@ -20,22 +20,12 @@ namespace Agile.Core.Infrastructure
         protected IServiceProvider GetServiceProvider()
         {
             if (ServiceProvider == null)
+            {
                 return null;
+            }
             var accessor = ServiceProvider?.GetService<IHttpContextAccessor>();
             var context = accessor?.HttpContext;
             return context?.RequestServices ?? ServiceProvider;
-        }
-
-        protected virtual void RunStartupTasks(ITypeFinder typeFinder)
-        {
-            var startupTasks = typeFinder.FindClassesOfType<IStartupTask>();
-
-            var instances = startupTasks
-                .Select(startupTask => (IStartupTask)Activator.CreateInstance(startupTask))
-                .OrderBy(startupTask => startupTask.Order);
-
-            foreach (var task in instances)
-                task.Execute();
         }
 
         public virtual void RegisterDependencies(ContainerBuilder containerBuilder, AgileConfig agileConfig)
@@ -51,20 +41,24 @@ namespace Agile.Core.Infrastructure
                 .OrderBy(dependencyRegistrar => dependencyRegistrar.Order);
 
             foreach (var dependencyRegistrar in instances)
+            {
                 dependencyRegistrar.Register(containerBuilder, _typeFinder, agileConfig);
+            }
         }
 
         private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.FullName == args.Name);
             if (assembly != null)
+            {
                 return assembly;
-
+            }
             var tf = Resolve<ITypeFinder>();
             if (tf == null)
+            {
                 return null;
-            assembly = tf.GetAssemblies().FirstOrDefault(a => a.FullName == args.Name);
-            return assembly;
+            }
+            return tf.GetAssemblies().FirstOrDefault(a => a.FullName == args.Name);
         }
 
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration, AgileConfig agileConfig)
@@ -77,9 +71,9 @@ namespace Agile.Core.Infrastructure
                 .OrderBy(startup => startup.Order);
 
             foreach (var instance in instances)
+            {
                 instance.ConfigureServices(services, configuration);
-
-            RunStartupTasks(_typeFinder);
+            }
 
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
         }
@@ -96,7 +90,9 @@ namespace Agile.Core.Infrastructure
                 .OrderBy(startup => startup.Order);
 
             foreach (var instance in instances)
+            {
                 instance.Configure(application);
+            }
         }
 
         public T Resolve<T>() where T : class
@@ -108,7 +104,9 @@ namespace Agile.Core.Infrastructure
         {
             var sp = GetServiceProvider();
             if (sp == null)
+            {
                 return null;
+            }
             return sp.GetService(type);
         }
 
@@ -128,7 +126,9 @@ namespace Agile.Core.Infrastructure
                     {
                         var service = Resolve(parameter.ParameterType);
                         if (service == null)
-                            throw new AgileException("Unknown dependency");
+                        {
+                            throw new AgileException("未知依赖注入");
+                        }
                         return service;
                     });
                     return Activator.CreateInstance(type, parameters.ToArray());
@@ -138,8 +138,7 @@ namespace Agile.Core.Infrastructure
                     innerException = ex;
                 }
             }
-
-            throw new AgileException("No constructor was found that had all the dependencies satisfied.", innerException);
+            throw new AgileException("没有找到满足所有依赖项的构造函数！", innerException);
         }
         public virtual IServiceProvider ServiceProvider => _serviceProvider;
     }

@@ -21,10 +21,14 @@ namespace Agile.Core.Infrastructure
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 if (!Matches(assembly.FullName))
+                {
                     continue;
+                }
 
                 if (addedAssemblyNames.Contains(assembly.FullName))
+                {
                     continue;
+                }
 
                 assemblies.Add(assembly);
                 addedAssemblyNames.Add(assembly.FullName);
@@ -37,7 +41,9 @@ namespace Agile.Core.Infrastructure
             {
                 var assembly = Assembly.Load(assemblyName);
                 if (addedAssemblyNames.Contains(assembly.FullName))
+                {
                     continue;
+                }
 
                 assemblies.Add(assembly);
                 addedAssemblyNames.Add(assembly.FullName);
@@ -46,8 +52,7 @@ namespace Agile.Core.Infrastructure
 
         public virtual bool Matches(string assemblyFullName)
         {
-            return !Matches(assemblyFullName, AssemblySkipLoadingPattern)
-                   && Matches(assemblyFullName, AssemblyRestrictToLoadingPattern);
+            return !Matches(assemblyFullName, AssemblySkipLoadingPattern)&& Matches(assemblyFullName, AssemblyRestrictToLoadingPattern);
         }
 
         protected virtual bool Matches(string assemblyFullName, string pattern)
@@ -94,10 +99,14 @@ namespace Agile.Core.Infrastructure
                 foreach (var implementedInterface in type.FindInterfaces((objType, objCriteria) => true, null))
                 {
                     if (!implementedInterface.IsGenericType)
+                    {
                         continue;
+                    }
 
                     if (genericTypeDefinition.IsAssignableFrom(implementedInterface.GetGenericTypeDefinition()))
+                    {
                         return true;
+                    }
                 }
 
                 return false;
@@ -144,15 +153,21 @@ namespace Agile.Core.Infrastructure
                     }
 
                     if (types == null)
+                    {
                         continue;
+                    }
 
                     foreach (var t in types)
                     {
                         if (!assignTypeFrom.IsAssignableFrom(t) && (!assignTypeFrom.IsGenericTypeDefinition || !DoesTypeImplementOpenGeneric(t, assignTypeFrom)))
+                        {
                             continue;
+                        }
 
                         if (t.IsInterface)
+                        {
                             continue;
+                        }
 
                         if (onlyConcreteClasses)
                         {
@@ -172,7 +187,9 @@ namespace Agile.Core.Infrastructure
             {
                 var msg = string.Empty;
                 foreach (var e in ex.LoaderExceptions)
+                {
                     msg += e.Message + Environment.NewLine;
+                }
 
                 var fail = new Exception(msg, ex);
                 Debug.WriteLine(fail.Message, fail);
@@ -189,7 +206,9 @@ namespace Agile.Core.Infrastructure
             var assemblies = new List<Assembly>();
 
             if (LoadAppDomainAssemblies)
+            {
                 AddAssembliesInAppDomain(addedAssemblyNames, assemblies);
+            }
             AddConfiguredAssemblies(addedAssemblyNames, assemblies);
 
             return assemblies;

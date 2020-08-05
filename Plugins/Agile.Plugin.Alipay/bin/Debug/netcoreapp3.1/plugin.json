@@ -1,0 +1,9 @@
+﻿{
+  "Group": "企业应用",
+  "SystemName": "Agile.Plugin.Erp",
+  "Version": "1.0.0",
+  "Author": "lsoey",
+  "DisplayOrder": 1,
+  "FileName": "Agile.Plugin.Erp.dll",
+  "Description": "企业ERP系统插件"
+}

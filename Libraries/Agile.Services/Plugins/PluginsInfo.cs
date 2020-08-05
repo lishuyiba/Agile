@@ -10,9 +10,6 @@ namespace Agile.Services.Plugins
 {
     public partial class PluginsInfo : IPluginsInfo
     {
-
-
-        private const string OBSOLETE_FIELD = "Obsolete field, using only for compatibility";
         private List<string> _installedPluginNames = new List<string>();
         private IList<PluginDescriptorBaseInfo> _installedPlugins = new List<PluginDescriptorBaseInfo>();
 
@@ -25,15 +22,21 @@ namespace Agile.Services.Plugins
             {
                 filePath = _fileProvider.MapPath(AgilePluginDefaults.ObsoleteInstalledPluginsFilePath);
                 if (!_fileProvider.FileExists(filePath))
+                {
                     return new List<string>();
+                }
 
                 var pluginSystemNames = new List<string>();
                 using (var reader = new StringReader(_fileProvider.ReadAllText(filePath, Encoding.UTF8)))
                 {
                     string pluginName;
                     while ((pluginName = reader.ReadLine()) != null)
+                    {
                         if (!string.IsNullOrWhiteSpace(pluginName))
+                        {
                             pluginSystemNames.Add(pluginName.Trim());
+                        }
+                    }
                 }
 
                 _fileProvider.DeleteFile(filePath);
@@ -43,7 +46,9 @@ namespace Agile.Services.Plugins
 
             var text = _fileProvider.ReadAllText(filePath, Encoding.UTF8);
             if (string.IsNullOrEmpty(text))
+            {
                 return new List<string>();
+            }
 
             _fileProvider.DeleteFile(filePath);
 
@@ -58,8 +63,7 @@ namespace Agile.Services.Plugins
             PluginNamesToDelete = pluginsInfo.PluginNamesToDelete;
             PluginNamesToInstall = pluginsInfo.PluginNamesToInstall;
 
-            return InstalledPlugins.Any() || PluginNamesToUninstall.Any() || PluginNamesToDelete.Any() ||
-                   PluginNamesToInstall.Any();
+            return InstalledPlugins.Any() || PluginNamesToUninstall.Any() || PluginNamesToDelete.Any() || PluginNamesToInstall.Any();
         }
 
         public PluginsInfo(IAgileFileProvider fileProvider)
@@ -81,12 +85,11 @@ namespace Agile.Services.Plugins
                 _installedPluginNames.AddRange(GetObsoleteInstalledPluginNames());
 
                 if (_installedPluginNames.Any())
+                {
                     Save();
+                }
             }
-
-            var text = _fileProvider.FileExists(filePath)
-                ? _fileProvider.ReadAllText(filePath, Encoding.UTF8)
-                : string.Empty;
+            var text = _fileProvider.FileExists(filePath) ? _fileProvider.ReadAllText(filePath, Encoding.UTF8) : string.Empty;
             return !string.IsNullOrEmpty(text) && DeserializePluginInfo(text);
         }
 
@@ -95,8 +98,7 @@ namespace Agile.Services.Plugins
             InstalledPlugins = pluginsInfo.InstalledPlugins?.ToList() ?? new List<PluginDescriptorBaseInfo>();
             PluginNamesToUninstall = pluginsInfo.PluginNamesToUninstall?.ToList() ?? new List<string>();
             PluginNamesToDelete = pluginsInfo.PluginNamesToDelete?.ToList() ?? new List<string>();
-            PluginNamesToInstall = pluginsInfo.PluginNamesToInstall?.ToList() ??
-                                   new List<string>();
+            PluginNamesToInstall = pluginsInfo.PluginNamesToInstall?.ToList() ?? new List<string>();
             AssemblyLoadedCollision = pluginsInfo.AssemblyLoadedCollision?.ToList();
             PluginDescriptors = pluginsInfo.PluginDescriptors?.ToList();
             IncompatiblePlugins = pluginsInfo.IncompatiblePlugins?.ToList();
@@ -107,18 +109,18 @@ namespace Agile.Services.Plugins
             get
             {
                 if ((_installedPlugins?.Any() ?? false) || !_installedPluginNames.Any())
+                {
                     return _installedPlugins;
+                }
 
                 if (PluginDescriptors?.Any() ?? false)
-                    _installedPlugins = PluginDescriptors
-                        .Where(pd => _installedPluginNames.Any(pn =>
-                            pn.Equals(pd.SystemName, StringComparison.InvariantCultureIgnoreCase)))
-                        .Select(pd => pd as PluginDescriptorBaseInfo).ToList();
+                {
+                    _installedPlugins = PluginDescriptors.Where(pd => _installedPluginNames.Any(pn => pn.Equals(pd.SystemName, StringComparison.InvariantCultureIgnoreCase))).Select(pd => pd as PluginDescriptorBaseInfo).ToList();
+                }
                 else
-                    return _installedPluginNames
-                        .Where(name => !name.Equals(OBSOLETE_FIELD, StringComparison.InvariantCultureIgnoreCase))
-                        .Select(systemName => new PluginDescriptorBaseInfo { SystemName = systemName }).ToList();
-
+                {
+                    return _installedPluginNames.Select(systemName => new PluginDescriptorBaseInfo { SystemName = systemName }).ToList();
+                }
                 return _installedPlugins;
             }
             set => _installedPlugins = value;

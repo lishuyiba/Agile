@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">插件状态:</label>
+                        <label class="layui-form-label">当前状态:</label>
                         <div class="layui-input-inline">
                             <select name="sex">
                                 <option value="">请选择</option>
@@ -50,8 +50,11 @@
 @section Scripts{
     <!-- 表格操作列 -->
     <script type="text/html" id="userTbBar">
+        {{#  if(d.state==="未安装"){ }}
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="install">安装</a>
+        {{#  } else { }}
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="uninstall">卸载</a>
+        {{#  } }}
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
     </script>
 

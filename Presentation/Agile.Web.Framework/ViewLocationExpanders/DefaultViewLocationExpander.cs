@@ -10,12 +10,11 @@ namespace Agile.Web.Framework.ViewLocationExpanders
     {
         public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
         {
-            viewLocations = new[] {
-                            $"/Plugins/Agile.Plugin.{context.AreaName}/Areas/{context.AreaName}/Views/{{1}}/{{0}}.cshtml",
-                            $"/Plugins/Agile.Plugin.{context.AreaName}/Areas/{context.AreaName}/Views/Shared/{{0}}.cshtml",
-                        }
-                    .Concat(viewLocations);
-
+            viewLocations = new[]
+            {
+                $"/Plugins/Agile.Plugin.{context.AreaName}/Areas/{context.AreaName}/Views/{{1}}/{{0}}.cshtml",
+                $"/Plugins/Agile.Plugin.{context.AreaName}/Areas/{context.AreaName}/Views/Shared/{{0}}.cshtml",
+            }.Concat(viewLocations);
             return viewLocations;
         }
 

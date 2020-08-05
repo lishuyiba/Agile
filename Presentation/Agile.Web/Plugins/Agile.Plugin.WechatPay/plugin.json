@@ -1,0 +1,9 @@
+﻿{
+  "Group": "支付应用",
+  "SystemName": "Agile.Plugin.WechatPay",
+  "Version": "1.0.0",
+  "Author": "lsoey",
+  "DisplayOrder": 1,
+  "FileName": "Agile.Plugin.WechatPay.dll",
+  "Description": "支付宝支付插件"
+}

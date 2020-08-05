@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agile.Plugin.Cms", "Plugins
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agile.Plugin.Blog", "Plugins\Agile.Plugin.Blog\Agile.Plugin.Blog.csproj", "{00F435E7-88BF-446F-8E68-F5C65161593D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agile.Plugin.Erp", "Plugins\Agile.Plugin.Erp\Agile.Plugin.Erp.csproj", "{81703170-CE96-42BB-9784-938041A38E2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agile.Plugin.Erp", "Plugins\Agile.Plugin.Erp\Agile.Plugin.Erp.csproj", "{81703170-CE96-42BB-9784-938041A38E2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agile.Plugin.Alipay", "Plugins\Agile.Plugin.Alipay\Agile.Plugin.Alipay.csproj", "{9616C295-226A-42C8-8555-C461A5818E6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agile.Plugin.WechatPay", "Plugins\Agile.Plugin.WechatPay\Agile.Plugin.WechatPay.csproj", "{57B8E983-C10E-4605-A429-DE07FF158F61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{81703170-CE96-42BB-9784-938041A38E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81703170-CE96-42BB-9784-938041A38E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81703170-CE96-42BB-9784-938041A38E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9616C295-226A-42C8-8555-C461A5818E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9616C295-226A-42C8-8555-C461A5818E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9616C295-226A-42C8-8555-C461A5818E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9616C295-226A-42C8-8555-C461A5818E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B8E983-C10E-4605-A429-DE07FF158F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B8E983-C10E-4605-A429-DE07FF158F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B8E983-C10E-4605-A429-DE07FF158F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B8E983-C10E-4605-A429-DE07FF158F61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +88,8 @@ Global
 		{31CB31ED-EACB-4A39-ADFE-960551EFB2A0} = {F3BC4512-4C5B-4DBD-8878-89B2123245DB}
 		{00F435E7-88BF-446F-8E68-F5C65161593D} = {F3BC4512-4C5B-4DBD-8878-89B2123245DB}
 		{81703170-CE96-42BB-9784-938041A38E2F} = {F3BC4512-4C5B-4DBD-8878-89B2123245DB}
+		{9616C295-226A-42C8-8555-C461A5818E6B} = {F3BC4512-4C5B-4DBD-8878-89B2123245DB}
+		{57B8E983-C10E-4605-A429-DE07FF158F61} = {F3BC4512-4C5B-4DBD-8878-89B2123245DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4441CCF-1388-46FD-8314-071D5B1B6E60}

@@ -20,7 +20,6 @@ namespace Agile.Services.Plugins
 
         public List<(string PluginName, string AssemblyName)> References { get; }
 
-        public IList<(string PluginName, string AssemblyName)> Collisions =>
-            References.Where(reference => !reference.AssemblyName.Equals(AssemblyFullNameInMemory, StringComparison.CurrentCultureIgnoreCase)).ToList();
+        public IList<(string PluginName, string AssemblyName)> Collisions => References.Where(reference => !reference.AssemblyName.Equals(AssemblyFullNameInMemory, StringComparison.CurrentCultureIgnoreCase)).ToList();
     }
 }

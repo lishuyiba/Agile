@@ -27,30 +27,31 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
 
             _baseAppLibraries = new List<string>();
 
-            _baseAppLibraries.AddRange(_fileProvider.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
-                .Select(fileName => _fileProvider.GetFileName(fileName)));
+            _baseAppLibraries.AddRange(_fileProvider.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll").Select(fileName => _fileProvider.GetFileName(fileName)));
 
             if (!AppDomain.CurrentDomain.BaseDirectory.Equals(Environment.CurrentDirectory, StringComparison.InvariantCultureIgnoreCase))
             {
-                _baseAppLibraries.AddRange(_fileProvider.GetFiles(Environment.CurrentDirectory, "*.dll")
-                    .Select(fileName => _fileProvider.GetFileName(fileName)));
+                _baseAppLibraries.AddRange(_fileProvider.GetFiles(Environment.CurrentDirectory, "*.dll").Select(fileName => _fileProvider.GetFileName(fileName)));
             }
 
             var refsPathName = _fileProvider.Combine(Environment.CurrentDirectory, AgilePluginDefaults.RefsPathName);
             if (_fileProvider.DirectoryExists(refsPathName))
             {
-                _baseAppLibraries.AddRange(_fileProvider.GetFiles(refsPathName, "*.dll")
-                    .Select(fileName => _fileProvider.GetFileName(fileName)));
+                _baseAppLibraries.AddRange(_fileProvider.GetFiles(refsPathName, "*.dll").Select(fileName => _fileProvider.GetFileName(fileName)));
             }
         }
 
         public static void InitializePlugins(this ApplicationPartManager applicationPartManager, AgileConfig config)
         {
             if (applicationPartManager == null)
+            {
                 throw new ArgumentNullException(nameof(applicationPartManager));
+            }
 
             if (config == null)
+            {
                 throw new ArgumentNullException(nameof(config));
+            }
 
             PluginsInfo = new PluginsInfo(_fileProvider);
 
@@ -88,9 +89,7 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                             }
 
                             //获取插件目录下所有程序集
-                            var pluginFiles = _fileProvider.GetFiles(pluginDirectory, "*.dll", false)
-                                .Where(file => !binFiles.Contains(file) && IsPluginDirectory(_fileProvider.GetDirectoryName(file)))
-                                .ToList();
+                            var pluginFiles = _fileProvider.GetFiles(pluginDirectory, "*.dll", false).Where(file => !binFiles.Contains(file) && IsPluginDirectory(_fileProvider.GetDirectoryName(file))).ToList();
 
                             //读取插件程序集
                             var mainPluginFile = pluginFiles.FirstOrDefault(file =>
@@ -126,14 +125,13 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                         }
                         catch (ReflectionTypeLoadException exception)
                         {
-                            var error = exception.LoaderExceptions.Aggregate($"Plugins '{pluginDescriptor.SystemName}'. "
-                                , (message, nextMessage) => $"{message}{nextMessage.Message}{Environment.NewLine}");
+                            var error = exception.LoaderExceptions.Aggregate($"Plugins'{pluginDescriptor.SystemName}'", (message, nextMessage) => $"{message}{nextMessage.Message}{Environment.NewLine}");
 
                             throw new Exception(error, exception);
                         }
                         catch (Exception exception)
                         {
-                            throw new Exception($"Plugin '{pluginDescriptor.SystemName}'. {exception.Message}", exception);
+                            throw new Exception($"Plugin'{pluginDescriptor.SystemName}' {exception.Message}", exception);
                         }
                     }
                 }
@@ -141,7 +139,9 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                 {
                     var message = string.Empty;
                     for (var inner = exception; inner != null; inner = inner.InnerException)
+                    {
                         message = $"{message}{inner.Message}{Environment.NewLine}";
+                    }
 
                     throw new Exception(message, exception);
                 }
@@ -154,20 +154,26 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
         {
             var fileName = _fileProvider.GetFileName(filePath);
             if (_baseAppLibraries.Any(library => library.Equals(fileName, StringComparison.InvariantCultureIgnoreCase)))
+            {
                 return true;
+            }
 
             try
             {
                 var fileNameWithoutExtension = _fileProvider.GetFileNameWithoutExtension(filePath);
                 if (string.IsNullOrEmpty(fileNameWithoutExtension))
+                {
                     throw new Exception($"Cannot get file extension for {fileName}");
+                }
 
                 var assemblies = AppDomain.CurrentDomain.GetAssemblies();
                 foreach (var assembly in assemblies)
                 {
                     var assemblyName = assembly.FullName.Split(',').FirstOrDefault();
                     if (!fileNameWithoutExtension.Equals(assemblyName, StringComparison.InvariantCultureIgnoreCase))
+                    {
                         continue;
+                    }
 
                     if (!_loadedAssemblies.ContainsKey(assemblyName))
                     {
@@ -185,8 +191,7 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             return false;
         }
 
-        private static Assembly PerformFileDeploy(this ApplicationPartManager applicationPartManager,
-            string assemblyFile, string shadowCopyDirectory, AgileConfig config, IAgileFileProvider fileProvider)
+        private static Assembly PerformFileDeploy(this ApplicationPartManager applicationPartManager, string assemblyFile, string shadowCopyDirectory, AgileConfig config, IAgileFileProvider fileProvider)
         {
             if (string.IsNullOrEmpty(assemblyFile) || string.IsNullOrEmpty(fileProvider.GetParentDirectory(assemblyFile)))
             {
@@ -211,10 +216,11 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             }
 
             if (shadowCopiedAssembly != null)
+            {
                 return shadowCopiedAssembly;
+            }
 
-            var reserveDirectory = fileProvider.Combine(fileProvider.MapPath(AgilePluginDefaults.ShadowCopyPath),
-                $"{AgilePluginDefaults.ReserveShadowCopyPathName}{DateTime.Now.ToFileTimeUtc()}");
+            var reserveDirectory = fileProvider.Combine(fileProvider.MapPath(AgilePluginDefaults.ShadowCopyPath), $"{AgilePluginDefaults.ReserveShadowCopyPathName}{DateTime.Now.ToFileTimeUtc()}");
 
             return PerformFileDeploy(applicationPartManager, assemblyFile, reserveDirectory, config, fileProvider);
         }
@@ -240,8 +246,7 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             var shadowCopiedFile = fileProvider.Combine(shadowCopyDirectory, fileProvider.GetFileName(assemblyFile));
             if (fileProvider.FileExists(shadowCopiedFile))
             {
-                var areFilesIdentical = fileProvider.GetCreationTime(shadowCopiedFile).ToUniversalTime().Ticks >=
-                    fileProvider.GetCreationTime(assemblyFile).ToUniversalTime().Ticks;
+                var areFilesIdentical = fileProvider.GetCreationTime(shadowCopiedFile).ToUniversalTime().Ticks >= fileProvider.GetCreationTime(assemblyFile).ToUniversalTime().Ticks;
                 if (areFilesIdentical)
                 {
                     return shadowCopiedFile;
@@ -275,7 +280,9 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
         private static IList<(string DescriptionFile, PluginDescriptor PluginDescriptor)> GetDescriptionFilesAndDescriptors(string directoryName)
         {
             if (string.IsNullOrEmpty(directoryName))
+            {
                 throw new ArgumentNullException(nameof(directoryName));
+            }
 
             var result = new List<(string DescriptionFile, PluginDescriptor PluginDescriptor)>();
 
@@ -284,7 +291,9 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             foreach (var descriptionFile in files)
             {
                 if (!IsPluginDirectory(_fileProvider.GetDirectoryName(descriptionFile)))
+                {
                     continue;
+                }
 
                 var text = _fileProvider.ReadAllText(descriptionFile, Encoding.UTF8);
                 var pluginDescriptor = PluginDescriptor.GetPluginDescriptorFromText(text);
@@ -300,14 +309,20 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
         private static bool IsPluginDirectory(string directoryName)
         {
             if (string.IsNullOrEmpty(directoryName))
+            {
                 return false;
+            }
 
             var parent = _fileProvider.GetParentDirectory(directoryName);
             if (string.IsNullOrEmpty(parent))
+            {
                 return false;
+            }
 
             if (!_fileProvider.GetDirectoryNameOnly(parent).Equals(AgilePluginDefaults.PathName, StringComparison.InvariantCultureIgnoreCase))
+            {
                 return false;
+            }
 
             return true;
         }

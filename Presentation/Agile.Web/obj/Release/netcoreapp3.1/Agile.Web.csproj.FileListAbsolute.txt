@@ -392,7 +392,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Account\Login.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Common\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Plugin\List.cshtml.g.cs
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Cms\Areas\Cms\Views\Test\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Views\Default\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -421,3 +420,16 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Dictionary\List.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Menu\List.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Permission\List.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.Alipay\Agile.Plugin.Alipay.deps.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.Alipay\plugin.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.Blog\Agile.Plugin.Blog.deps.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.Blog\plugin.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.Erp\Agile.Plugin.Erp.deps.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.Erp\plugin.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.WechatPay\Agile.Plugin.WechatPay.deps.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Release\netcoreapp3.1\Plugins\Agile.Plugin.WechatPay\plugin.json
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Alipay\Areas\Alipay\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Blog\Areas\Blog\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Cms\Areas\Cms\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Release\netcoreapp3.1\Razor\Plugins\Agile.Plugin.WechatPay\Areas\WechatPay\Views\Default\Index.cshtml.g.cs

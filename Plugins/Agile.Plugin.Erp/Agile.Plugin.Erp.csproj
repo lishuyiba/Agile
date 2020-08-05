@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Areas\Erp\Views\Test\Index.cshtml" />
+    <None Remove="Areas\Erp\Views\Default\Index.cshtml" />
     <None Remove="plugin.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Areas\Erp\Views\Test\Index.cshtml">
+    <Content Include="Areas\Erp\Views\Default\Index.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="plugin.json">

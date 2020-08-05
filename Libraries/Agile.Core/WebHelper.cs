@@ -14,9 +14,6 @@ namespace Agile.Core
             _hostApplicationLifetime = hostApplicationLifetime;
         }
 
-        /// <summary>
-        /// Restart application domain
-        /// </summary>
         public virtual void RestartAppDomain()
         {
             _hostApplicationLifetime.StopApplication();

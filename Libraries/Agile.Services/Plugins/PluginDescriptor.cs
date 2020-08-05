@@ -24,11 +24,10 @@ namespace Agile.Services.Plugins
         public static PluginDescriptor GetPluginDescriptorFromText(string text)
         {
             if (string.IsNullOrEmpty(text))
+            {
                 return new PluginDescriptor();
-
-            var descriptor = JsonConvert.DeserializeObject<PluginDescriptor>(text);
-
-            return descriptor;
+            }
+            return JsonConvert.DeserializeObject<PluginDescriptor>(text);
         }
 
         public virtual TPlugin Instance<TPlugin>() where TPlugin : class, IPlugin
@@ -36,30 +35,33 @@ namespace Agile.Services.Plugins
             var instance = EngineContext.Current.ResolveUnregistered(PluginType);
             var typedInstance = instance as TPlugin;
             if (typedInstance != null)
+            {
                 typedInstance.PluginDescriptor = this;
-
+            }
             return typedInstance;
         }
 
         public int CompareTo(PluginDescriptor other)
         {
             if (DisplayOrder != other.DisplayOrder)
+            {
                 return DisplayOrder.CompareTo(other.DisplayOrder);
-
+            }
             return string.Compare(SystemName, other.SystemName, StringComparison.InvariantCultureIgnoreCase);
         }
 
         public virtual void Save()
         {
             var fileProvider = EngineContext.Current.Resolve<IAgileFileProvider>();
-
             if (OriginalAssemblyFile == null)
-                throw new Exception($"Cannot load original assembly path for {SystemName} plugin.");
-
+            {
+                throw new Exception($"未能载入程序集插件，插件名：{SystemName}");
+            }
             var filePath = fileProvider.Combine(fileProvider.GetDirectoryName(OriginalAssemblyFile), AgilePluginDefaults.DescriptionFileName);
             if (!fileProvider.FileExists(filePath))
-                throw new Exception($"Description file for {SystemName} plugin does not exist. {filePath}");
-
+            {
+                throw new Exception($"插件描述文件不存在，插件名：{SystemName}，插件路径：{filePath}");
+            }
             var text = JsonConvert.SerializeObject(this, Formatting.Indented);
             fileProvider.WriteAllText(filePath, text, Encoding.UTF8);
         }

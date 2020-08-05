@@ -29,7 +29,6 @@ namespace Agile.Services.Plugins
         }
 
         [JsonIgnore]
-        public virtual PluginDescriptorBaseInfo GetBaseInfoCopy =>
-            new PluginDescriptorBaseInfo { SystemName = SystemName, Version = Version };
+        public virtual PluginDescriptorBaseInfo GetBaseInfoCopy =>new PluginDescriptorBaseInfo { SystemName = SystemName, Version = Version };
     }
 }

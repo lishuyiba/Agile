@@ -26,19 +26,19 @@ namespace Agile.Core
             var output = EnsureNotNull(email);
             output = output.Trim();
             output = EnsureMaximumLength(output, 255);
-
             if (!IsValidEmail(output))
             {
                 throw new AgileException("Email is not valid.");
             }
-
             return output;
         }
 
         public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
+            {
                 return false;
+            }
 
             email = email.Trim();
 
@@ -55,7 +55,9 @@ namespace Agile.Core
             using var random = new SecureRandomNumberGenerator();
             var str = string.Empty;
             for (var i = 0; i < length; i++)
+            {
                 str = string.Concat(str, random.Next(10).ToString());
+            }
             return str;
         }
 
@@ -68,10 +70,14 @@ namespace Agile.Core
         public static string EnsureMaximumLength(string str, int maxLength, string postfix = null)
         {
             if (string.IsNullOrEmpty(str))
+            {
                 return str;
+            }
 
             if (str.Length <= maxLength)
+            {
                 return str;
+            }
 
             var pLen = postfix?.Length ?? 0;
 
@@ -102,13 +108,19 @@ namespace Agile.Core
         public static bool ArraysEqual<T>(T[] a1, T[] a2)
         {
             if (ReferenceEquals(a1, a2))
+            {
                 return true;
+            }
 
             if (a1 == null || a2 == null)
+            {
                 return false;
+            }
 
             if (a1.Length != a2.Length)
+            {
                 return false;
+            }
 
             var comparer = EqualityComparer<T>.Default;
             return !a1.Where((t, i) => !comparer.Equals(t, a2[i])).Any();
@@ -122,11 +134,17 @@ namespace Agile.Core
             var instanceType = instance.GetType();
             var pi = instanceType.GetProperty(propertyName);
             if (pi == null)
-                throw new AgileException("No property '{0}' found on the instance of type '{1}'.", propertyName, instanceType);
+            {
+                throw new AgileException("类型为'{0}'的实例类型'{1}'未找到。", propertyName, instanceType);
+            }
             if (!pi.CanWrite)
-                throw new AgileException("The property '{0}' on the instance of type '{1}' does not have a setter.", propertyName, instanceType);
+            {
+                throw new AgileException("类型为'{0}'的实例上的属性'{1}'没有setter。", propertyName, instanceType);
+            }
             if (value != null && !value.GetType().IsAssignableFrom(pi.PropertyType))
+            {
                 value = To(value, pi.PropertyType);
+            }
             pi.SetValue(instance, value, Array.Empty<object>());
         }
 
@@ -138,23 +156,33 @@ namespace Agile.Core
         public static object To(object value, Type destinationType, CultureInfo culture)
         {
             if (value == null)
+            {
                 return null;
+            }
 
             var sourceType = value.GetType();
 
             var destinationConverter = TypeDescriptor.GetConverter(destinationType);
             if (destinationConverter.CanConvertFrom(value.GetType()))
+            {
                 return destinationConverter.ConvertFrom(null, culture, value);
+            }
 
             var sourceConverter = TypeDescriptor.GetConverter(sourceType);
             if (sourceConverter.CanConvertTo(destinationType))
+            {
                 return sourceConverter.ConvertTo(null, culture, value, destinationType);
+            }
 
             if (destinationType.IsEnum && value is int)
+            {
                 return Enum.ToObject(destinationType, (int)value);
+            }
 
             if (!destinationType.IsInstanceOfType(value))
+            {
                 return Convert.ChangeType(value, destinationType, culture);
+            }
 
             return value;
         }
@@ -169,11 +197,16 @@ namespace Agile.Core
             if (string.IsNullOrEmpty(str)) return string.Empty;
             var result = string.Empty;
             foreach (var c in str)
+            {
                 if (c.ToString() != c.ToString().ToLower())
+                {
                     result += " " + c.ToString();
+                }
                 else
+                {
                     result += c.ToString();
-
+                }
+            }
             result = result.TrimStart();
             return result;
         }
@@ -182,7 +215,9 @@ namespace Agile.Core
         {
             var age = endDate.Year - startDate.Year;
             if (startDate > endDate.AddYears(-age))
+            {
                 age--;
+            }
             return age;
         }
 
@@ -190,12 +225,12 @@ namespace Agile.Core
         {
             if (target == null)
             {
-                throw new ArgumentNullException(nameof(target), "The assignment target cannot be null.");
+                throw new ArgumentNullException(nameof(target), "值不能为空！");
             }
 
             if (string.IsNullOrEmpty(fieldName))
             {
-                throw new ArgumentException("fieldName", "The field name cannot be null or empty.");
+                throw new ArgumentException("fieldName", "文件名不能为空！");
             }
 
             var t = target.GetType();
@@ -204,18 +239,17 @@ namespace Agile.Core
             while (t != null)
             {
                 fi = t.GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
-
                 if (fi != null)
+                {
                     break;
-
+                }
                 t = t.BaseType;
             }
 
             if (fi == null)
             {
-                throw new Exception($"Field '{fieldName}' not found in type hierarchy.");
+                throw new Exception($"字段 '{fieldName}'未找到！");
             }
-
             return fi.GetValue(target);
         }
 

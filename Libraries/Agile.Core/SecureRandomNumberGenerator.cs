@@ -64,13 +64,13 @@ namespace Agile.Core
         protected override void Dispose(bool disposing)
         {
             if (_disposed)
+            {
                 return;
-
+            }
             if (disposing)
             {
                 _rng?.Dispose();
             }
-
             _disposed = true;
         }
     }

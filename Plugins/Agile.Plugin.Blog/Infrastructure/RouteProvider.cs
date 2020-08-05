@@ -11,7 +11,7 @@ namespace Agile.Plugin.Blog.Infrastructure
     {
         public void RegisterRoutes(IEndpointRouteBuilder endpointRouteBuilder)
         {
-            endpointRouteBuilder.MapAreaControllerRoute(name: "areaRoute", "blog", pattern: "{area:exists}/{controller=Test}/{action=Index}/{id?}");
+            endpointRouteBuilder.MapAreaControllerRoute(name: "areaRoute", "blog", pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}");
         }
 
         public int Priority => 0;

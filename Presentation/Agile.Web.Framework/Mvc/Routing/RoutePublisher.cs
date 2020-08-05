@@ -17,9 +17,7 @@ namespace Agile.Web.Framework.Mvc.Routing
         public virtual void RegisterRoutes(IEndpointRouteBuilder endpointRouteBuilder)
         {
             var routeProviders = _typeFinder.FindClassesOfType<IRouteProvider>();
-            var instances = routeProviders
-                .Select(routeProvider => (IRouteProvider)Activator.CreateInstance(routeProvider))
-                .OrderByDescending(routeProvider => routeProvider.Priority);
+            var instances = routeProviders.Select(routeProvider => (IRouteProvider)Activator.CreateInstance(routeProvider)).OrderByDescending(routeProvider => routeProvider.Priority);
 
             foreach (var routeProvider in instances)
             {

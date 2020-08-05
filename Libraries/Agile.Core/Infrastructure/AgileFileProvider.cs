@@ -15,9 +15,7 @@ namespace Agile.Core.Infrastructure
         public AgileFileProvider(IWebHostEnvironment webHostEnvironment)
             : base(File.Exists(webHostEnvironment.ContentRootPath) ? Path.GetDirectoryName(webHostEnvironment.ContentRootPath) : webHostEnvironment.ContentRootPath)
         {
-            WebRootPath = File.Exists(webHostEnvironment.WebRootPath)
-                ? Path.GetDirectoryName(webHostEnvironment.WebRootPath)
-                : webHostEnvironment.WebRootPath;
+            WebRootPath = File.Exists(webHostEnvironment.WebRootPath) ? Path.GetDirectoryName(webHostEnvironment.WebRootPath) : webHostEnvironment.WebRootPath;
         }
 
         private static void DeleteDirectoryRecursive(string path)
@@ -30,7 +28,9 @@ namespace Agile.Core.Infrastructure
             {
                 curIteration += 1;
                 if (curIteration > maxIterationToWait)
+                {
                     return;
+                }
                 Thread.Sleep(100);
             }
         }
@@ -45,7 +45,9 @@ namespace Agile.Core.Infrastructure
             var path = Path.Combine(paths.SelectMany(p => IsUncPath(p) ? new[] { p } : p.Split('\\', '/')).ToArray());
 
             if (Environment.OSVersion.Platform == PlatformID.Unix && !IsUncPath(path))
+            {
                 path = "/" + path;
+            }
 
             return path;
         }
@@ -53,26 +55,29 @@ namespace Agile.Core.Infrastructure
         public virtual void CreateDirectory(string path)
         {
             if (!DirectoryExists(path))
+            {
                 Directory.CreateDirectory(path);
+            }
         }
 
         public virtual void CreateFile(string path)
         {
             if (FileExists(path))
+            {
                 return;
+            }
 
             var fileInfo = new FileInfo(path);
             CreateDirectory(fileInfo.DirectoryName);
-
-            using (File.Create(path))
-            {
-            }
+            using (File.Create(path)) { }
         }
 
         public void DeleteDirectory(string path)
         {
             if (string.IsNullOrEmpty(path))
+            {
                 throw new ArgumentNullException(path);
+            }
 
             foreach (var directory in Directory.GetDirectories(path))
             {
@@ -96,7 +101,9 @@ namespace Agile.Core.Infrastructure
         public virtual void DeleteFile(string filePath)
         {
             if (!FileExists(filePath))
+            {
                 return;
+            }
 
             File.Delete(filePath);
         }
@@ -110,11 +117,9 @@ namespace Agile.Core.Infrastructure
             Directory.Move(sourceDirName, destDirName);
         }
 
-        public virtual IEnumerable<string> EnumerateFiles(string directoryPath, string searchPattern,
-            bool topDirectoryOnly = true)
+        public virtual IEnumerable<string> EnumerateFiles(string directoryPath, string searchPattern,bool topDirectoryOnly = true)
         {
-            return Directory.EnumerateFiles(directoryPath, searchPattern,
-                topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
+            return Directory.EnumerateFiles(directoryPath, searchPattern,topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
         }
 
         public virtual void FileCopy(string sourceFileName, string destFileName, bool overwrite = false)
@@ -130,7 +135,9 @@ namespace Agile.Core.Infrastructure
         public virtual long FileLength(string path)
         {
             if (!FileExists(path))
+            {
                 return -1;
+            }
 
             return new FileInfo(path).Length;
         }
@@ -145,7 +152,9 @@ namespace Agile.Core.Infrastructure
             var allPaths = new List<string>();
 
             if (paths.Any() && !paths[0].Contains(WebRootPath, StringComparison.InvariantCulture))
+            {
                 allPaths.Add(WebRootPath);
+            }
 
             allPaths.AddRange(paths);
 
@@ -165,10 +174,11 @@ namespace Agile.Core.Infrastructure
         public virtual string[] GetDirectories(string path, string searchPattern = "", bool topDirectoryOnly = true)
         {
             if (string.IsNullOrEmpty(searchPattern))
+            {
                 searchPattern = "*";
+            }
 
-            return Directory.GetDirectories(path, searchPattern,
-                topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
+            return Directory.GetDirectories(path, searchPattern,topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
         }
         public virtual string GetDirectoryName(string path)
         {
@@ -197,10 +207,11 @@ namespace Agile.Core.Infrastructure
         public virtual string[] GetFiles(string directoryPath, string searchPattern = "", bool topDirectoryOnly = true)
         {
             if (string.IsNullOrEmpty(searchPattern))
+            {
                 searchPattern = "*.*";
+            }
 
-            return Directory.GetFiles(directoryPath, searchPattern,
-                topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
+            return Directory.GetFiles(directoryPath, searchPattern,topDirectoryOnly ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories);
         }
 
         public virtual DateTime GetLastAccessTime(string path)
@@ -224,10 +235,14 @@ namespace Agile.Core.Infrastructure
         public virtual string GetVirtualPath(string path)
         {
             if (string.IsNullOrEmpty(path))
+            {
                 return path;
+            }
 
             if (!IsDirectory(path) && FileExists(path))
+            {
                 path = new FileInfo(path).DirectoryName;
+            }
 
             path = path?.Replace(WebRootPath, string.Empty).Replace('\\', '/').Trim('/').TrimStart('~', '/');
 

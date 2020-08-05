@@ -1,7 +1,7 @@
 ﻿{
   "InstalledPlugins": [
     {
-      "SystemName": "Agile.Plugin.Cms",
+      "SystemName": "Agile.Plugin.Alipay",
       "Version": "1.0.0"
     },
     {
@@ -9,7 +9,15 @@
       "Version": "1.0.0"
     },
     {
+      "SystemName": "Agile.Plugin.Cms",
+      "Version": "1.0.0"
+    },
+    {
       "SystemName": "Agile.Plugin.Erp",
+      "Version": "1.0.0"
+    },
+    {
+      "SystemName": "Agile.Plugin.WechatPay",
       "Version": "1.0.0"
     }
   ],

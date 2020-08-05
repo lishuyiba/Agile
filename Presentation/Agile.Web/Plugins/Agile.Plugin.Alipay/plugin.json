@@ -1,0 +1,9 @@
+﻿{
+  "Group": "支付应用",
+  "SystemName": "Agile.Plugin.Alipay",
+  "Version": "1.0.0",
+  "Author": "lsoey",
+  "DisplayOrder": 1,
+  "FileName": "Agile.Plugin.Alipay.dll",
+  "Description": "微信支付插件"
+}

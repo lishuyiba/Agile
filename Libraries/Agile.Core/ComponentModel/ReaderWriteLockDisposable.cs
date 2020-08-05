@@ -11,11 +11,6 @@ namespace Agile.Core.ComponentModel
         private readonly ReaderWriterLockSlim _rwLock;
         private readonly ReaderWriteLockType _readerWriteLockType;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReaderWriteLockDisposable"/> class.
-        /// </summary>
-        /// <param name="rwLock">The readers–writer lock</param>
-        /// <param name="readerWriteLockType">Lock type</param>
         public ReaderWriteLockDisposable(ReaderWriterLockSlim rwLock, ReaderWriteLockType readerWriteLockType = ReaderWriteLockType.Write)
         {
             _rwLock = rwLock;
@@ -34,19 +29,18 @@ namespace Agile.Core.ComponentModel
                     break;
             }
         }
-
-        // Public implementation of Dispose pattern callable by consumers.
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        // Protected implementation of Dispose pattern.
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed)
+            {
                 return;
+            }
 
             if (disposing)
             {
