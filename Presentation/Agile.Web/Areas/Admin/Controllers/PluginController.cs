@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Agile.Core;
 using Agile.Core.Infrastructure;
+using Agile.Models.Plugins;
 using Agile.Services.Plugins;
 using Agile.Web.Framework;
 using Microsoft.AspNetCore.Http;
@@ -30,59 +31,19 @@ namespace Agile.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult GetData()
+        public IActionResult GetData(PluginSearchModel search, int pageIndex, int pageSize)
         {
-            var results = new List<object>();
-            var pluginDescriptors = _pluginService.GetPluginDescriptors().ToList();
-            foreach (var pluginDescriptor in pluginDescriptors)
-            {
-                var restartState = "";
-
-                var state = pluginDescriptor.Installed == true ? "已安装" : "未安装";
-
-                var toDelete = _pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(pluginDescriptor.SystemName));
-                var toInstall = _pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(pluginDescriptor.SystemName));
-                var toUnInstall = _pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(pluginDescriptor.SystemName));
-                if (toDelete)
-                {
-                    restartState = "删除";
-                }
-                else if (toInstall)
-                {
-                    restartState = "安装";
-                }
-                else if (toUnInstall)
-                {
-                    restartState = "卸载";
-                }
-                else
-                {
-                    restartState = state;
-                }
-
-                var item = new
-                {
-                    pluginDescriptor.Group,
-                    pluginDescriptor.SystemName,
-                    pluginDescriptor.Author,
-                    pluginDescriptor.Version,
-                    pluginDescriptor.AssemblyFileName,
-                    pluginDescriptor.Description,
-                    State = state,
-                    RestartState = restartState
-                };
-                results.Add(item);
-            }
+            var datas = _pluginService.GetPluginModels(search, pageIndex, pageSize, out int total);
             return Json(new
             {
                 code = 0,
-                msg = "",
-                count = results.Count,
-                data = results
+                msg = "ok",
+                count = total,
+                data = datas
             });
         }
 
-        public IActionResult IsRestartRequired()
+        public IActionResult GetIsRestartRequired()
         {
             var result = _pluginService.IsRestartRequired();
             return Json(result);

@@ -1,0 +1,9 @@
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\bin\Debug\netcoreapp3.1\Agile.Models.deps.json
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\bin\Debug\netcoreapp3.1\Agile.Models.dll
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\bin\Debug\netcoreapp3.1\Agile.Models.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.csprojAssemblyReference.cache
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.AssemblyInfoInputs.cache
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.AssemblyInfo.cs
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.csproj.CoreCompileInputs.cache
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.dll
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.pdb

@@ -1,7 +1,9 @@
 ﻿using Agile.Core.Infrastructure;
+using Agile.Models.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Agile.Services.Plugins
@@ -174,6 +176,131 @@ namespace Agile.Services.Plugins
         public bool ChangePlugin(string systemName)
         {
             return _pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(systemName)) || _pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(systemName)) || _pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(systemName));
+        }
+
+        public List<PluginModel> GetPluginModels(PluginSearchModel search, int pageIndex, int pageSize, out int total)
+        {
+            total = 0;
+            var plugins = new List<PluginModel>();
+            var pluginDescriptors = GetPluginDescriptors(search);
+            if (pluginDescriptors != null)
+            {
+                total = pluginDescriptors.Count();
+                foreach (var pluginDescriptor in pluginDescriptors)
+                {
+                    var pluginModel = new PluginModel();
+                    pluginModel.Group = pluginDescriptor.Group;
+                    pluginModel.SystemName = pluginDescriptor.SystemName;
+                    pluginModel.Author = pluginDescriptor.Author;
+                    pluginModel.Version = pluginDescriptor.Version;
+                    pluginModel.AssemblyFileName = pluginDescriptor.AssemblyFileName;
+                    pluginModel.Description = pluginDescriptor.Description;
+                    pluginModel.State = ParsePluginStateToString(pluginDescriptor.Installed);
+                    pluginModel.RestartState = GetPluginRestartState(pluginDescriptor);
+                    plugins.Add(pluginModel);
+                }
+            }
+            return plugins;
+        }
+
+        private string GetPluginRestartState(PluginDescriptor pluginDescriptor)
+        {
+            string restartState = ParsePluginStateToString(pluginDescriptor.Installed);
+            if (_pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(pluginDescriptor.SystemName)))
+            {
+                restartState = "删除";
+            }
+            else if (_pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(pluginDescriptor.SystemName)))
+            {
+                restartState = "安装";
+            }
+            else if (_pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(pluginDescriptor.SystemName)))
+            {
+                restartState = "卸载";
+            }
+            return restartState;
+        }
+
+        public virtual IEnumerable<PluginDescriptor> GetPluginDescriptors(PluginSearchModel search)
+        {
+            var pluginDescriptors = _pluginsInfo.PluginDescriptors;
+
+            var filters = ListFilters(search);
+
+            pluginDescriptors = pluginDescriptors.Where(filters).ToList();
+
+            return pluginDescriptors;
+        }
+
+        private Func<PluginDescriptor, bool> ListFilters(PluginSearchModel search)
+        {
+            if (search == null)
+            {
+                return descriptor => true;
+            }
+            if (search.State == 1 || search.State == 2)
+            {
+                return descriptor => FilterByPluginSystemName(descriptor, search.SystemName) && FilterByPluginAuthor(descriptor, search.Author) && FilterByPluginState(descriptor, search.State);
+            }
+            return descriptor => FilterByPluginSystemName(descriptor, search.SystemName) && FilterByPluginAuthor(descriptor, search.Author);
+        }
+
+        protected virtual bool FilterByPluginSystemName(PluginDescriptor pluginDescriptor, string systemName)
+        {
+            if (pluginDescriptor == null)
+            {
+                throw new ArgumentNullException(nameof(pluginDescriptor));
+            }
+
+            if (string.IsNullOrEmpty(systemName))
+            {
+                return true;
+            }
+
+            return pluginDescriptor.SystemName.Contains(systemName, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        protected virtual bool FilterByPluginAuthor(PluginDescriptor pluginDescriptor, string author)
+        {
+            if (pluginDescriptor == null)
+            {
+                throw new ArgumentNullException(nameof(pluginDescriptor));
+            }
+
+            if (string.IsNullOrEmpty(author))
+            {
+                return true;
+            }
+
+            return pluginDescriptor.Author.Contains(author, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        protected virtual bool FilterByPluginState(PluginDescriptor pluginDescriptor, int state)
+        {
+            if (pluginDescriptor == null)
+            {
+                throw new ArgumentNullException(nameof(pluginDescriptor));
+            }
+            var installed = true;
+            if (state == 1)
+            {
+                installed = false;
+            }
+            else if (state == 2)
+            {
+                installed = true;
+            }
+            return pluginDescriptor.Installed.Equals(installed);
+        }
+
+        public bool ParsePluginStateToBool(string state)
+        {
+            return state == "已安装" ? true : false;
+        }
+
+        public string ParsePluginStateToString(bool state)
+        {
+            return state == true ? "已安装" : "未安装";
         }
     }
 }

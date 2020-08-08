@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Agile.Models.Plugins;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,6 @@ namespace Agile.Services.Plugins
         void PreparePluginToDelete(string systemName);
         void DeletePlugins();
         void ClearPlugins(string systemName);
+        List<PluginModel> GetPluginModels(PluginSearchModel search, int pageIndex, int pageSize, out int total);
     }
 }

@@ -13,10 +13,6 @@
       "Version": "1.0.0"
     },
     {
-      "SystemName": "Agile.Plugin.Erp",
-      "Version": "1.0.0"
-    },
-    {
       "SystemName": "Agile.Plugin.WechatPay",
       "Version": "1.0.0"
     }

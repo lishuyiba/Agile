@@ -13,23 +13,22 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">插件名称:</label>
                         <div class="layui-input-inline">
-                            <input name="username" class="layui-input" placeholder="输入插件名称" />
+                            <input name="SystemName" class="layui-input" placeholder="输入插件名称" />
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">插件作者:</label>
                         <div class="layui-input-inline">
-                            <input name="nickName" class="layui-input" placeholder="输入插件作者" />
+                            <input name="Author" class="layui-input" placeholder="输入插件作者" />
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">当前状态:</label>
                         <div class="layui-input-inline">
-                            <select name="sex">
-                                <option value="">请选择</option>
-                                <option value="1">已安装</option>
-                                <option value="2">未安装</option>
-                                <option value="3">已卸载</option>
+                            <select name="State">
+                                <option value="-1">请选择</option>
+                                <option value="1">未安装</option>
+                                <option value="2">已安装</option>
                             </select>
                         </div>
                     </div>
@@ -93,7 +92,8 @@
             });
 
             form.on('submit(userTbSearch)', function (data) {
-                layer.msg('开发中...', { icon: 6 });
+                debugger;
+                insTb.reload({ where: data.field, page: { curr: 1 } });
                 return false;
             });
 
@@ -160,7 +160,7 @@
             }
 
             function doRestartMsg() {
-                $.get('/admin/plugin/isRestartRequired', {}, function (res) {
+                $.get('/admin/plugin/GetIsRestartRequired', {}, function (res) {
                     if (res == true) {
                         layer.msg("检测插件变更，请重新系统以便于插件生效！", { icon: 7 });
                     }

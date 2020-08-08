@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Agile.Core\Agile.Core.csproj" />
+    <ProjectReference Include="..\Agile.Models\Agile.Models.csproj" />
   </ItemGroup>
 
 </Project>

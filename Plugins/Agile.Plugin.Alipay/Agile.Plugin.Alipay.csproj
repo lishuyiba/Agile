@@ -21,11 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Alipay\Models\" />
+    <ProjectReference Include="..\..\Presentation\Agile.Web.Framework\Agile.Web.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Presentation\Agile.Web.Framework\Agile.Web.Framework.csproj" />
+    <Folder Include="Areas\Alipay\Models\" />
   </ItemGroup>
 
 </Project>

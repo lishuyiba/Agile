@@ -163,7 +163,7 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                 var fileNameWithoutExtension = _fileProvider.GetFileNameWithoutExtension(filePath);
                 if (string.IsNullOrEmpty(fileNameWithoutExtension))
                 {
-                    throw new Exception($"Cannot get file extension for {fileName}");
+                    throw new Exception($"{fileName}文件不存在！");
                 }
 
                 var assemblies = AppDomain.CurrentDomain.GetAssemblies();
@@ -195,7 +195,7 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
         {
             if (string.IsNullOrEmpty(assemblyFile) || string.IsNullOrEmpty(fileProvider.GetParentDirectory(assemblyFile)))
             {
-                throw new InvalidOperationException($"The plugin directory for the {fileProvider.GetFileName(assemblyFile)} file exists in a directory outside of the allowed nopCommerce directory hierarchy");
+                throw new InvalidOperationException($"{fileProvider.GetFileName(assemblyFile)} 文件的插件目录存在于允许的Agile目录层次结构之外的目录中。");
             }
 
             fileProvider.CreateDirectory(shadowCopyDirectory);

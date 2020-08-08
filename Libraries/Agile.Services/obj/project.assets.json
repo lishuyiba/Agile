@@ -102,6 +102,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Agile.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Agile.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Agile.Models.dll": {}
+        }
       }
     }
   },
@@ -322,11 +332,17 @@
       "type": "project",
       "path": "../Agile.Core/Agile.Core.csproj",
       "msbuildProject": "../Agile.Core/Agile.Core.csproj"
+    },
+    "Agile.Models/1.0.0": {
+      "type": "project",
+      "path": "../Agile.Models/Agile.Models.csproj",
+      "msbuildProject": "../Agile.Models/Agile.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Agile.Core >= 1.0.0",
+      "Agile.Models >= 1.0.0",
       "Newtonsoft.Json >= 12.0.3"
     ]
   },
@@ -362,6 +378,9 @@
           "projectReferences": {
             "D:\\Workspace\\source\\repos\\Agile\\Libraries\\Agile.Core\\Agile.Core.csproj": {
               "projectPath": "D:\\Workspace\\source\\repos\\Agile\\Libraries\\Agile.Core\\Agile.Core.csproj"
+            },
+            "D:\\Workspace\\source\\repos\\Agile\\Libraries\\Agile.Models\\Agile.Models.csproj": {
+              "projectPath": "D:\\Workspace\\source\\repos\\Agile\\Libraries\\Agile.Models\\Agile.Models.csproj"
             }
           }
         }

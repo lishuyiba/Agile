@@ -401,7 +401,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\R
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Role\List.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\TaskSchedule\List.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\List.cshtml.g.cs
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Default\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -433,3 +432,5 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\P
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.WechatPay\plugin.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Cms\Areas\Cms\Views\Default\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.WechatPay\Areas\WechatPay\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Models.dll
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Models.pdb

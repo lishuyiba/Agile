@@ -127,7 +127,7 @@ namespace Agile.Core.Infrastructure
                         var service = Resolve(parameter.ParameterType);
                         if (service == null)
                         {
-                            throw new AgileException("未知依赖注入");
+                            throw new AgileException("未知依赖注入！");
                         }
                         return service;
                     });

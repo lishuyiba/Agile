@@ -293,3 +293,5 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netco
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.csproj.CopyComplete
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.pdb
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Models.dll
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Models.pdb
