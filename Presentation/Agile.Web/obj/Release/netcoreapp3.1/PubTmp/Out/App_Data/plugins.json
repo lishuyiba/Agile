@@ -1,35 +1,12 @@
 ﻿{
   "InstalledPlugins": [
     {
-      "SystemName": "Agile.Plugin.Alipay",
-      "Version": "1.0.0"
-    },
-    {
-      "SystemName": "Agile.Plugin.Blog",
-      "Version": "1.0.0"
-    },
-    {
-      "SystemName": "Agile.Plugin.Cms",
-      "Version": "1.0.0"
-    },
-    {
-      "SystemName": "Agile.Plugin.WechatPay",
-      "Version": "1.0.0"
-    },
-    {
       "SystemName": "Agile.Plugin.Erp",
       "Version": "1.0.0"
     }
   ],
-  "PluginNamesToUninstall": [
-    "Agile.Plugin.Cms",
-    "Agile.Plugin.Blog",
-    "Agile.Plugin.Alipay",
-    "Agile.Plugin.WechatPay"
-  ],
+  "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
   "PluginNamesToInstall": [],
-  "PluginNamesToUpdate": [
-    "Agile.Plugin.Erp"
-  ]
+  "PluginNamesToUpdate": []
 }

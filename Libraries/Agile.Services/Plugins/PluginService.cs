@@ -332,5 +332,11 @@ namespace Agile.Services.Plugins
         {
             return state == true ? "已安装" : "未安装";
         }
+
+        public void UpdatePlugins()
+        {
+            _pluginsInfo.PluginNamesToUpdate.Clear();
+            _pluginsInfo.Save();
+        }
     }
 }

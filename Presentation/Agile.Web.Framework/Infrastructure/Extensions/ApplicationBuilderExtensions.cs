@@ -1,4 +1,5 @@
 ﻿using Agile.Core.Infrastructure;
+using Agile.Core.Logging;
 using Agile.Services.Plugins;
 using Agile.Web.Framework.Mvc.Routing;
 using Microsoft.AspNetCore.Builder;
@@ -23,11 +24,14 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
         {
             var engine = EngineContext.Current;
 
+            engine.Resolve<ILogger>().Information(typeof(ApplicationBuilderExtensions), "正在启动引擎...");
+
             var pluginService = engine.Resolve<IPluginService>();
 
             pluginService.InstallPlugins();
             pluginService.UninstallPlugins();
             pluginService.DeletePlugins();
+            pluginService.UpdatePlugins();
         }
 
         public static void UseAgileEndpoints(this IApplicationBuilder application)
@@ -57,7 +61,10 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
                         return Task.CompletedTask;
                     }
 
-                    ExceptionDispatchInfo.Throw(exception);
+                    EngineContext.Current.Resolve<ILogger>().Error(typeof(ApplicationBuilderExtensions), "异常中间件捕获", exception);
+
+                    var pageNotFoundPath = "/Admin/Common/Error";
+                    context.Response.Redirect(context.Request.PathBase + pageNotFoundPath);
 
                     return Task.CompletedTask;
                 });

@@ -8,7 +8,5 @@
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
   "PluginNamesToInstall": [],
-  "PluginNamesToUpdate": [
-    "Agile.Plugin.Erp"
-  ]
+  "PluginNamesToUpdate": []
 }

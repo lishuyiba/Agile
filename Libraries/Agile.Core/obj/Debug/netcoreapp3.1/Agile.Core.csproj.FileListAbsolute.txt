@@ -3,6 +3,6 @@ D:\Workspace\source\repos\Agile\Libraries\Agile.Core\bin\Debug\netcoreapp3.1\Agi
 D:\Workspace\source\repos\Agile\Libraries\Agile.Core\bin\Debug\netcoreapp3.1\Agile.Core.pdb
 D:\Workspace\source\repos\Agile\Libraries\Agile.Core\obj\Debug\netcoreapp3.1\Agile.Core.AssemblyInfoInputs.cache
 D:\Workspace\source\repos\Agile\Libraries\Agile.Core\obj\Debug\netcoreapp3.1\Agile.Core.AssemblyInfo.cs
-D:\Workspace\source\repos\Agile\Libraries\Agile.Core\obj\Debug\netcoreapp3.1\Agile.Core.csproj.CoreCompileInputs.cache
 D:\Workspace\source\repos\Agile\Libraries\Agile.Core\obj\Debug\netcoreapp3.1\Agile.Core.dll
 D:\Workspace\source\repos\Agile\Libraries\Agile.Core\obj\Debug\netcoreapp3.1\Agile.Core.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Core\obj\Debug\netcoreapp3.1\Agile.Core.csproj.CoreCompileInputs.cache

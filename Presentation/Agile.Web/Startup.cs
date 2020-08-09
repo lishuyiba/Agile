@@ -6,6 +6,7 @@ using Agile.Core.Configuration;
 using Agile.Core.Infrastructure;
 using Agile.Web.Framework.Infrastructure.Extensions;
 using Autofac;
+using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

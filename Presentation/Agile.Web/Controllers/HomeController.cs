@@ -15,5 +15,13 @@ namespace Agile.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult LogTest()
+        {
+
+            int.Parse("xx");
+
+            return Content("ok");
+        }
     }
 }

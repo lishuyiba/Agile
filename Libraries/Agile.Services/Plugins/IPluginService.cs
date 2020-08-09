@@ -20,5 +20,6 @@ namespace Agile.Services.Plugins
         void DeletePlugins();
         void ClearPlugins(string systemName);
         List<PluginModel> GetPluginModels(PluginSearchModel search, int pageIndex, int pageSize, out int total);
+        void UpdatePlugins();
     }
 }

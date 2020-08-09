@@ -2,6 +2,7 @@
 using Agile.Core.Configuration;
 using Agile.Core.Infrastructure;
 using Agile.Core.Infrastructure.DependencyManagement;
+using Agile.Core.Logging;
 using Agile.Services.Plugins;
 using Agile.Web.Framework.Mvc.Routing;
 using Autofac;
@@ -17,6 +18,7 @@ namespace Agile.Web.Framework.Infrastructure
 
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder, AgileConfig config)
         {
+            builder.RegisterType<DefaultLogger>().As<ILogger>().SingleInstance();
 
             builder.RegisterType<AgileFileProvider>().As<IAgileFileProvider>().InstancePerLifetimeScope();
 

@@ -62,8 +62,9 @@ namespace Agile.Services.Plugins
             PluginNamesToUninstall = pluginsInfo.PluginNamesToUninstall;
             PluginNamesToDelete = pluginsInfo.PluginNamesToDelete;
             PluginNamesToInstall = pluginsInfo.PluginNamesToInstall;
+            PluginNamesToUpdate = pluginsInfo.PluginNamesToUpdate;
 
-            return InstalledPlugins.Any() || PluginNamesToUninstall.Any() || PluginNamesToDelete.Any() || PluginNamesToInstall.Any();
+            return InstalledPlugins.Any() || PluginNamesToUninstall.Any() || PluginNamesToDelete.Any() || PluginNamesToInstall.Any() || PluginNamesToUpdate.Any();
         }
 
         public PluginsInfo(IAgileFileProvider fileProvider)

@@ -2,6 +2,7 @@
 using Agile.Core.ComponentModel;
 using Agile.Core.Configuration;
 using Agile.Core.Infrastructure;
+using Agile.Core.Logging;
 using Agile.Services.Plugins;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using System;
