@@ -19,6 +19,7 @@ namespace Agile.Services.Plugins
         IList<string> PluginNamesToDelete { get; set; }
 
         IList<string> PluginNamesToInstall { get; set; }
+        IList<string> PluginNamesToUpdate { get; set; }
 
         IList<PluginLoadedAssemblyInfo> AssemblyLoadedCollision { get; set; }
 

@@ -10,3 +10,5 @@ D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3
 D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.csproj.CopyComplete
 D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.dll
 D:\Workspace\source\repos\Agile\Libraries\Agile.Services\obj\Release\netcoreapp3.1\Agile.Services.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Models.dll
+D:\Workspace\source\repos\Agile\Libraries\Agile.Services\bin\Release\netcoreapp3.1\Agile.Models.pdb

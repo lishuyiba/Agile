@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using Agile.Core;
 using Agile.Core.Configuration;
 using Agile.Core.Infrastructure;
@@ -55,6 +57,12 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
         public static IMvcBuilder AddAgileMvc(this IServiceCollection services)
         {
             var mvcBuilder = services.AddControllersWithViews();
+
+            //使用JsonResult返回时中文被编码
+            mvcBuilder.AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
+            });
 
             mvcBuilder.AddRazorRuntimeCompilation();
 

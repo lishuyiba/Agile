@@ -10,7 +10,6 @@ namespace Agile.Services.Plugins
 {
     public partial class PluginService : IPluginService
     {
-
         private readonly IPluginsInfo _pluginsInfo;
         private readonly IAgileFileProvider _fileProvider;
 
@@ -79,9 +78,9 @@ namespace Agile.Services.Plugins
             return pluginDescriptors;
         }
 
-        public virtual bool IsRestartRequired()
+        public virtual bool CheckIsRestartRequired()
         {
-            return _pluginsInfo.PluginNamesToInstall.Any() || _pluginsInfo.PluginNamesToUninstall.Any() || _pluginsInfo.PluginNamesToDelete.Any();
+            return _pluginsInfo.PluginNamesToInstall.Any() || _pluginsInfo.PluginNamesToUninstall.Any() || _pluginsInfo.PluginNamesToDelete.Any() || _pluginsInfo.PluginNamesToUpdate.Any();
         }
 
         public PluginDescriptor GetPluginDescriptorBySystemName(string systemName)
@@ -95,6 +94,16 @@ namespace Agile.Services.Plugins
                 return;
             }
             _pluginsInfo.PluginNamesToInstall.Add(systemName);
+            _pluginsInfo.Save();
+        }
+
+        public void PreparePluginToUpdate(string systemName)
+        {
+            if (_pluginsInfo.PluginNamesToUpdate.Any(item => item == systemName))
+            {
+                return;
+            }
+            _pluginsInfo.PluginNamesToUpdate.Add(systemName);
             _pluginsInfo.Save();
         }
 
@@ -173,9 +182,26 @@ namespace Agile.Services.Plugins
             _pluginsInfo.Save();
         }
 
-        public bool ChangePlugin(string systemName)
+        public string ChangePlugin(string systemName)
         {
-            return _pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(systemName)) || _pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(systemName)) || _pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(systemName));
+            string changePluginMessage = "";
+            if (_pluginsInfo.PluginNamesToInstall.Any(s => s.Equals(systemName)))
+            {
+                changePluginMessage = $"插件“{systemName}”重启状态已存在（安装），请重启系统以便于插件生效！";
+            }
+            if (_pluginsInfo.PluginNamesToUninstall.Any(s => s.Equals(systemName)))
+            {
+                changePluginMessage = $"插件“{systemName}”重启状态已存在（卸载），请重启系统以便于插件生效！";
+            }
+            if (_pluginsInfo.PluginNamesToDelete.Any(s => s.Equals(systemName)))
+            {
+                changePluginMessage = $"插件“{systemName}”重启状态已存在（删除），请重启系统以便于插件生效！";
+            }
+            if (_pluginsInfo.PluginNamesToUpdate.Any(s => s.Equals(systemName)))
+            {
+                changePluginMessage = $"插件“{systemName}”重启状态已存在（更新），请重启系统以便于插件生效！";
+            }
+            return changePluginMessage;
         }
 
         public List<PluginModel> GetPluginModels(PluginSearchModel search, int pageIndex, int pageSize, out int total)
@@ -218,6 +244,10 @@ namespace Agile.Services.Plugins
             {
                 restartState = "卸载";
             }
+            else if (_pluginsInfo.PluginNamesToUpdate.Any(s => s.Equals(pluginDescriptor.SystemName)))
+            {
+                restartState = "更新";
+            }
             return restartState;
         }
 
@@ -238,7 +268,7 @@ namespace Agile.Services.Plugins
             {
                 return descriptor => true;
             }
-            if (search.State == 1 || search.State == 2)
+            if (search.State == StateType.UnInstall || search.State == StateType.Installed)
             {
                 return descriptor => FilterByPluginSystemName(descriptor, search.SystemName) && FilterByPluginAuthor(descriptor, search.Author) && FilterByPluginState(descriptor, search.State);
             }
@@ -275,18 +305,18 @@ namespace Agile.Services.Plugins
             return pluginDescriptor.Author.Contains(author, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        protected virtual bool FilterByPluginState(PluginDescriptor pluginDescriptor, int state)
+        protected virtual bool FilterByPluginState(PluginDescriptor pluginDescriptor, StateType state)
         {
             if (pluginDescriptor == null)
             {
                 throw new ArgumentNullException(nameof(pluginDescriptor));
             }
             var installed = true;
-            if (state == 1)
+            if (state == StateType.UnInstall)
             {
                 installed = false;
             }
-            else if (state == 2)
+            else if (state == StateType.Installed)
             {
                 installed = true;
             }

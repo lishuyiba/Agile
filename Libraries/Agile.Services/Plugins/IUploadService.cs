@@ -7,6 +7,6 @@ namespace Agile.Services.Plugins
 {
     public partial interface IUploadService
     {
-        IList<PluginDescriptor> UploadPlugins(IFormFile archivefile);
+        (PluginDescriptor descriptor, bool IsUpdate) UploadPlugins(IFormFile archivefile);
     }
 }

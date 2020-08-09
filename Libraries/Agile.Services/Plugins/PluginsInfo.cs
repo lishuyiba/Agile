@@ -133,6 +133,7 @@ namespace Agile.Services.Plugins
 
         public virtual IList<string> PluginNamesToInstall { get; set; } = new List<string>();
 
+        public virtual IList<string> PluginNamesToUpdate { get; set; } = new List<string>();
 
         [JsonIgnore]
         public virtual IList<string> IncompatiblePlugins { get; set; }

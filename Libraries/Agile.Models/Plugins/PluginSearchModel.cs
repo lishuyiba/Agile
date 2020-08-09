@@ -8,6 +8,13 @@ namespace Agile.Models.Plugins
     {
         public string SystemName { get; set; }
         public string Author { get; set; }
-        public int State { get; set; }
+        public StateType State { get; set; }
+    }
+
+    public enum StateType
+    {
+        All = 0,
+        UnInstall = 1,
+        Installed = 2
     }
 }

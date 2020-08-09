@@ -13,15 +13,23 @@
       "Version": "1.0.0"
     },
     {
-      "SystemName": "Agile.Plugin.Erp",
+      "SystemName": "Agile.Plugin.WechatPay",
       "Version": "1.0.0"
     },
     {
-      "SystemName": "Agile.Plugin.WechatPay",
+      "SystemName": "Agile.Plugin.Erp",
       "Version": "1.0.0"
     }
   ],
-  "PluginNamesToUninstall": [],
+  "PluginNamesToUninstall": [
+    "Agile.Plugin.Cms",
+    "Agile.Plugin.Blog",
+    "Agile.Plugin.Alipay",
+    "Agile.Plugin.WechatPay"
+  ],
   "PluginNamesToDelete": [],
-  "PluginNamesToInstall": []
+  "PluginNamesToInstall": [],
+  "PluginNamesToUpdate": [
+    "Agile.Plugin.Erp"
+  ]
 }

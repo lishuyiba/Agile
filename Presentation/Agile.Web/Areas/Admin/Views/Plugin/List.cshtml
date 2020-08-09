@@ -26,7 +26,7 @@
                         <label class="layui-form-label">当前状态:</label>
                         <div class="layui-input-inline">
                             <select name="State">
-                                <option value="-1">请选择</option>
+                                <option value="0">请选择</option>
                                 <option value="1">未安装</option>
                                 <option value="2">已安装</option>
                             </select>
@@ -50,7 +50,7 @@
     <!-- 表格操作列 -->
     <script type="text/html" id="userTbBar">
         {{#  if(d.state==="未安装"){ }}
-        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="install">安装</a>
+        <a class="layui-btn layui-btn layui-btn-xs" lay-event="install">安装</a>
         {{#  } else { }}
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="uninstall">卸载</a>
         {{#  } }}
@@ -58,7 +58,7 @@
     </script>
 
     <script type="text/html" id="toolbar">
-        <button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>安装插件</button>
+        <button lay-event="add" class="layui-btn layui-btn-sm icon-btn"><i class="layui-icon">&#xe654;</i>安装/更新插件</button>
     </script>
 
     <script>
@@ -85,23 +85,34 @@
                     { field: 'version', title: '版本号', sort: true },
                     { field: 'assemblyFileName', title: '程序集名称', sort: true },
                     { field: 'state', title: '当前状态', sort: true },
-                    { field: 'restartState', title: '重启状态', sort: true },
+                    {
+                        field: 'restartState', title: '重启状态', sort: true, templet: function (d) {
+                            debugger;
+                            if (d.restartState === d.state) {
+                                return '<span class="layui-badge layui-badge-green">保持当前状态</span>';
+                            }
+                            return '<span class="layui-badge layui-badge-danger">' + d.restartState + '</span>';
+                        }
+                    },
                     { field: 'description', title: '备注', sort: true },
                     { title: '操作', toolbar: '#userTbBar', align: 'center', minWidth: 200 }
                 ]]
             });
 
+            //搜索
             form.on('submit(userTbSearch)', function (data) {
                 debugger;
                 insTb.reload({ where: data.field, page: { curr: 1 } });
                 return false;
             });
 
+            //重启系统
             form.on('submit(restartApplication)', function (data) {
                 doRestartApplication();
                 return false;
             });
 
+            //列表点击事件
             table.on('tool(userTable)', function (obj) {
                 var systemName = obj.data.systemName;
                 if (obj.event === 'install') {
@@ -115,14 +126,17 @@
                 }
             });
 
+            //安装插件弹出框
             table.on('toolbar(userTable)', function (obj) {
                 if (obj.event === 'add') {
                     showEditModel(obj.data);
                 }
             });
 
-            doRestartMsg();
+            //检查插件是否需要重启
+            doCheckIsRestartRequired();
 
+            //安装插件弹出框
             function showEditModel(mData) {
                 admin.open({
                     type: 2,
@@ -135,34 +149,81 @@
 
             }
 
+            //安装插件
             function doInstall(systemName) {
                 $.get('/admin/plugin/install', { systemName: systemName }, function (res) {
-                    layer.msg(res, { icon: 1 });
+                    if (res.code === 0) {
+                        layer.msg(res.msg, { icon: 1 });
+                    }
+                    else {
+                        layer.alert(res.msg, { icon: 2 });
+                    }
+                    insTb.reload();
                 });
             }
 
+            //重启系统
             function doRestartApplication() {
-                $.get('/admin/common/restartApplication', '', function (res) {
-                    console.log(res);
-                });
+                var index = layer.load(0, { shade: false });
+                setTimeout(function () {
+                    $.ajax({
+                        type: 'get',
+                        url: '/admin/common/checkRestart',
+                        complete: function (XMLHttpRequest, status) {
+                            layer.close(index);
+                            if (status == 'timeout') {
+                                layer.alert("重启失败，请求超时！", { icon: 2 });
+                            }
+                            if (status == 'error') {
+                                layer.alert("重启失败，系统发生错误！", { icon: 2 });
+                            }
+                            if (status == 'success') {
+                                layer.msg("重启成功！", { icon: 1, time: 3000 }, function () {
+                                    window.location.href = window.location.href;
+                                });
+                            }
+                            else {
+                                layer.alert("重启失败，系统发生故障！", { icon: 2 });
+                            }
+                        }
+                    })
+                }, 5000);
+                $.get('/admin/common/restartApplication', '', function (res) { });
             }
 
+            //卸载插件
             function doUnInstall(systemName) {
                 $.get('/admin/plugin/uninstall', { systemName: systemName }, function (res) {
-                    layer.msg(res, { icon: 1 });
+                    //debugger;
+                    if (res.code === 0) {
+                        layer.msg(res.msg, { icon: 1 });
+                    }
+                    else {
+                        layer.alert(res.msg, { icon: 2 });
+                    }
+                    insTb.reload();
                 });
             }
 
+            //删除插件
             function doDelete(systemName) {
                 $.get('/admin/plugin/delete', { systemName: systemName }, function (res) {
-                    layer.msg(res, { icon: 1 });
+                    if (res.code === 0) {
+                        layer.msg(res.msg, { icon: 1 });
+                    }
+                    else {
+                        layer.alert(res.msg, { icon: 2 });
+                    }
+                    insTb.reload();
                 });
             }
 
-            function doRestartMsg() {
-                $.get('/admin/plugin/GetIsRestartRequired', {}, function (res) {
-                    if (res == true) {
-                        layer.msg("检测插件变更，请重新系统以便于插件生效！", { icon: 7 });
+            //检查插件是否需要重启
+            function doCheckIsRestartRequired() {
+                $.get('/admin/plugin/CheckIsRestartRequired', {}, function (res) {
+                    //debugger;
+                    if (res.code === 0 && res.data === true) {
+                        layer.msg("检测到插件变更，请重新系统以便于插件生效！", { icon: 7 });
                     }
                 });
             }

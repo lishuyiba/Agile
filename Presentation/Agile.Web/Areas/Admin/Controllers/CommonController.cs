@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Agile.Core;
 using Agile.Web.Framework;
@@ -26,6 +27,11 @@ namespace Agile.Web.Areas.Admin.Controllers
         {
             _webHelper.RestartAppDomain();
 
+            return new EmptyResult();
+        }
+
+        public IActionResult CheckRestart()
+        {
             return new EmptyResult();
         }
 

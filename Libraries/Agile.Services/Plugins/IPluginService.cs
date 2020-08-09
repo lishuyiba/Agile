@@ -11,11 +11,12 @@ namespace Agile.Services.Plugins
         IEnumerable<PluginDescriptor> GetPluginDescriptors();
         void InstallPlugins();
         void UninstallPlugins();
-        bool IsRestartRequired();
-        bool ChangePlugin(string systemName);
+        bool CheckIsRestartRequired();
+        string ChangePlugin(string systemName);
         void PreparePluginToInstall(string systemName);
         void PreparePluginToUninstall(string systemName);
         void PreparePluginToDelete(string systemName);
+        void PreparePluginToUpdate(string systemName);
         void DeletePlugins();
         void ClearPlugins(string systemName);
         List<PluginModel> GetPluginModels(PluginSearchModel search, int pageIndex, int pageSize, out int total);

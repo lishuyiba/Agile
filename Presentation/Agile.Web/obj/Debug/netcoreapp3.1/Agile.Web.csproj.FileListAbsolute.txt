@@ -417,8 +417,11 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\s
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Agile.Web.genruntimeconfig.cache
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Alipay\Areas\Alipay\Views\Default\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Blog\Areas\Blog\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Cms\Areas\Cms\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.WechatPay\Areas\WechatPay\Views\Default\Index.cshtml.g.cs
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Models.dll
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Models.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Index.cshtml.g.cs
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.Alipay\Agile.Plugin.Alipay.deps.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.Alipay\plugin.json
@@ -430,7 +433,4 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\P
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.Erp\plugin.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.WechatPay\Agile.Plugin.WechatPay.deps.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Plugins\Agile.Plugin.WechatPay\plugin.json
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Cms\Areas\Cms\Views\Default\Index.cshtml.g.cs
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.WechatPay\Areas\WechatPay\Views\Default\Index.cshtml.g.cs
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Models.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\bin\Debug\netcoreapp3.1\Agile.Models.pdb
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\obj\Debug\netcoreapp3.1\Razor\Plugins\Agile.Plugin.Alipay\Areas\Alipay\Views\Default\Index.cshtml.g.cs
