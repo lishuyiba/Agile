@@ -1,13 +1,5 @@
-# Set the default behavior, in case people don't have core.autocrlf set.
-* text=auto
-
 # Auto detect text files and perform LF normalization
-*.cs text=auto
-*.txt text=auto
-
-# Declare files that will always have CRLF line endings on checkout.
-*.sln text eol=crlf
-*.csproj text eol=crlf
+* text=auto
 
 # Custom for Visual Studio
 *.cs     diff=csharp
@@ -23,3 +15,7 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+*.js linguist-language=.net
+*.css linguist-language=.net
+*.html linguist-language=.net
