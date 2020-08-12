@@ -12,5 +12,10 @@ namespace Agile.Plugin.Erp.Areas.Erp.Controllers
         {
             return View();
         }
+
+        public IActionResult Version()
+        {
+            return View();
+        }
     }
 }

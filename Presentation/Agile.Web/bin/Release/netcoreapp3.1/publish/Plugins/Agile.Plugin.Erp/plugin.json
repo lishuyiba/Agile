@@ -1,7 +1,7 @@
 ﻿{
   "Group": "应用系统",
   "SystemName": "Agile.Plugin.Erp",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Author": "lsoey",
   "DisplayOrder": 1,
   "FileName": "Agile.Plugin.Erp.dll",

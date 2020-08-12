@@ -23,9 +23,8 @@ namespace Agile.Web
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder
-                    //.UseIIS()
-                    .UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseIISIntegration();
                 });
         }
     }

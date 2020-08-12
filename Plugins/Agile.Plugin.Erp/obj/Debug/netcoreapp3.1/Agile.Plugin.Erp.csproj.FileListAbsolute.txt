@@ -291,3 +291,4 @@ D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1\Agile.Plugin.Erp.dll
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1\Agile.Plugin.Erp.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Index.cshtml
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Version.cshtml
