@@ -6,3 +6,4 @@ D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\A
 D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.csproj.CoreCompileInputs.cache
 D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.dll
 D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.pdb
+D:\Workspace\source\repos\Agile\Libraries\Agile.Models\obj\Debug\netcoreapp3.1\Agile.Models.csprojAssemblyReference.cache

@@ -108,7 +108,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\net
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Console.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -151,7 +150,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\net
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Data.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Diagnostics.Contracts.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Diagnostics.Debug.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Diagnostics.EventLog.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Release\netcoreapp3.1\refs\System.Diagnostics.Process.dll

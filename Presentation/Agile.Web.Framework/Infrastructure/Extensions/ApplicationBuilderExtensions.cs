@@ -1,5 +1,6 @@
 ﻿using Agile.Core.Infrastructure;
 using Agile.Core.Logging;
+using Agile.Core.TaskScheduler;
 using Agile.Services.Plugins;
 using Agile.Web.Framework.Mvc.Routing;
 using Microsoft.AspNetCore.Builder;
@@ -25,13 +26,13 @@ namespace Agile.Web.Framework.Infrastructure.Extensions
             var engine = EngineContext.Current;
 
             engine.Resolve<ILogger>().Information(typeof(ApplicationBuilderExtensions), "正在启动引擎...");
-
             var pluginService = engine.Resolve<IPluginService>();
-
             pluginService.InstallPlugins();
             pluginService.UninstallPlugins();
             pluginService.DeletePlugins();
             pluginService.UpdatePlugins();
+
+            TaskManager.Instance.Initialize();
         }
 
         public static void UseAgileEndpoints(this IApplicationBuilder application)

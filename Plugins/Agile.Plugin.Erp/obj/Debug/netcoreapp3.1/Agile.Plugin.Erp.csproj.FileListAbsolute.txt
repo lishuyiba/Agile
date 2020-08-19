@@ -1,3 +1,5 @@
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Index.cshtml
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Version.cshtml
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\plugin.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Agile.Plugin.Erp.deps.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Agile.Plugin.Erp.dll
@@ -109,7 +111,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Localization.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Logging.Console.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -152,7 +153,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Data.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Diagnostics.Contracts.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Diagnostics.Debug.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Diagnostics.EventLog.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\refs\System.Diagnostics.Process.dll
@@ -290,5 +290,3 @@ D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1\Agile.Plugin.Erp.csproj.CopyComplete
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1\Agile.Plugin.Erp.dll
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Erp\obj\Debug\netcoreapp3.1\Agile.Plugin.Erp.pdb
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Index.cshtml
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Erp\Areas\Erp\Views\Default\Version.cshtml

@@ -89,7 +89,7 @@
                         field: 'restartState', title: '重启状态', sort: true, templet: function (d) {
                             debugger;
                             if (d.restartState === d.state) {
-                                return '<span class="layui-badge layui-badge-green">保持当前状态</span>';
+                                return '<span class="layui-badge layui-badge-green">' + d.state + '</span>';
                             }
                             return '<span class="layui-badge layui-badge-danger">' + d.restartState + '</span>';
                         }

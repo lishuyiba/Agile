@@ -1,11 +1,6 @@
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Agile.Plugin.Alipay.deps.json
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Agile.Plugin.Alipay.dll
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Agile.Plugin.Alipay.pdb
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.AssemblyInfoInputs.cache
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.AssemblyInfo.cs
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.csproj.CoreCompileInputs.cache
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.dll
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.pdb
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\plugin.json
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Areas\Alipay\Views\Default\Index.cshtml
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Antiforgery.dll
@@ -295,8 +290,6 @@ D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Agile.Web.Framework.pdb
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Agile.Core.pdb
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\bin\Debug\netcoreapp3.1\Agile.Services.pdb
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.csprojAssemblyReference.cache
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.csproj.CopyComplete
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\Areas\Alipay\Views\Default\Index.cshtml
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\plugin.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\Agile.Plugin.Alipay.deps.json
@@ -409,7 +402,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alip
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Localization.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Logging.Console.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -452,7 +444,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alip
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Data.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Diagnostics.Contracts.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Diagnostics.Debug.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Diagnostics.EventLog.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Diagnostics.Process.dll
@@ -583,3 +574,10 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alip
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Xml.XPath.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\System.Xml.XPath.XDocument.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Alipay\refs\WindowsBase.dll
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.csprojAssemblyReference.cache
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.AssemblyInfoInputs.cache
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.AssemblyInfo.cs
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.csproj.CoreCompileInputs.cache
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.csproj.CopyComplete
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.dll
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Alipay\obj\Debug\netcoreapp3.1\Agile.Plugin.Alipay.pdb

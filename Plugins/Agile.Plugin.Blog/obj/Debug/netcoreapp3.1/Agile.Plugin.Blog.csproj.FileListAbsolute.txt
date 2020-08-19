@@ -1,3 +1,4 @@
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\Areas\Blog\Views\Default\Index.cshtml
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\plugin.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\Agile.Plugin.Blog.deps.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\Agile.Plugin.Blog.dll
@@ -109,7 +110,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Localization.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Logging.Console.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -152,7 +152,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Data.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Diagnostics.Contracts.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Diagnostics.Debug.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Diagnostics.EventLog.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\refs\System.Diagnostics.Process.dll
@@ -290,4 +289,3 @@ D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Blog\obj\Debug\netcoreapp3.
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Blog\obj\Debug\netcoreapp3.1\Agile.Plugin.Blog.csproj.CopyComplete
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Blog\obj\Debug\netcoreapp3.1\Agile.Plugin.Blog.dll
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.Blog\obj\Debug\netcoreapp3.1\Agile.Plugin.Blog.pdb
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Blog\Areas\Blog\Views\Default\Index.cshtml

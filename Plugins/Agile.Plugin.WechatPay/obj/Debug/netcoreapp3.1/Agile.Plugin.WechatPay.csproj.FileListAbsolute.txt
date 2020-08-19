@@ -290,13 +290,7 @@ D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\bin\Debug\netcore
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\bin\Debug\netcoreapp3.1\Agile.Web.Framework.pdb
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\bin\Debug\netcoreapp3.1\Agile.Core.pdb
 D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\bin\Debug\netcoreapp3.1\Agile.Services.pdb
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.csprojAssemblyReference.cache
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.AssemblyInfoInputs.cache
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.AssemblyInfo.cs
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.csproj.CoreCompileInputs.cache
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.csproj.CopyComplete
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.dll
-D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.pdb
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\Areas\WechatPay\Views\Default\Index.cshtml
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\plugin.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\Agile.Plugin.WechatPay.deps.json
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\Agile.Plugin.WechatPay.dll
@@ -408,7 +402,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Wech
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Localization.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Logging.Console.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -451,7 +444,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Wech
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Data.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Diagnostics.Contracts.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Diagnostics.Debug.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Diagnostics.EventLog.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Diagnostics.Process.dll
@@ -582,4 +574,10 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.Wech
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Xml.XPath.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\System.Xml.XPath.XDocument.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\refs\WindowsBase.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web\Plugins\Agile.Plugin.WechatPay\Areas\WechatPay\Views\Default\Index.cshtml
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.csprojAssemblyReference.cache
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.AssemblyInfoInputs.cache
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.AssemblyInfo.cs
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.csproj.CoreCompileInputs.cache
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.csproj.CopyComplete
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.dll
+D:\Workspace\source\repos\Agile\Plugins\Agile.Plugin.WechatPay\obj\Debug\netcoreapp3.1\Agile.Plugin.WechatPay.pdb

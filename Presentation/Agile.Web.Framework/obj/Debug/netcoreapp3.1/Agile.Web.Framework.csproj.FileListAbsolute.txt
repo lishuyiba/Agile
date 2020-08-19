@@ -108,7 +108,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netco
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Console.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Debug.dll
@@ -151,7 +150,6 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netco
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Data.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Contracts.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Debug.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.EventLog.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Process.dll
@@ -283,9 +281,11 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netco
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\System.Xml.XPath.XDocument.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\refs\WindowsBase.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Core.dll
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Models.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Services.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Core.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Services.pdb
+D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Models.pdb
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.csprojAssemblyReference.cache
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.AssemblyInfoInputs.cache
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.AssemblyInfo.cs
@@ -293,5 +293,3 @@ D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netco
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.csproj.CopyComplete
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.dll
 D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\obj\Debug\netcoreapp3.1\Agile.Web.Framework.pdb
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Models.dll
-D:\Workspace\source\repos\Agile\Presentation\Agile.Web.Framework\bin\Debug\netcoreapp3.1\Agile.Models.pdb

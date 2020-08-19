@@ -11,6 +11,7 @@ namespace Agile.Core.Logging
         void Warning(Type type, string message, Exception exception = null);
 
         void Error(Type type, string message, Exception exception = null);
+
         void Debug(Type type, string message, Exception exception = null);
     }
 }
